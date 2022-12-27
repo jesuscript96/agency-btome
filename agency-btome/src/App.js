@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+//Implementamos React-router-dom en app.js, por eso importamos....
+
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Importaciones de containers y componentes
+
 function App() {
+  
   return (
+    // Todos los elementos en React van a estar en lenguaje JSX.
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      {/* Genero el entorno de React Router Dom para el enrutado de vistas y componentes */}
+      
+      <BrowserRouter>     
+        
+        <Routes>
+        {/* La parte cambiante es lo que contiene Routes DENTRO */}
+
+            {/* Cada Route contendrá una vista..... */} 
+           
+        </Routes>
+
+      </BrowserRouter>
+
     </div>
   );
 }
