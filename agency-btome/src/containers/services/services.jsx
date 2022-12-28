@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
+import { addService, } from "./serviceSlice"
 import { Col, Container, Image, Row, Spinner } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -16,8 +17,8 @@ import Form from 'react-bootstrap/Form';
 
 
 const Services = () => {
-    // const dispatch = useDispatch();
-    // let navigate = useNavigate();
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
 
     const [services, setServices] = useState([]);
     const [criteria, setCriteria] = useState({
@@ -55,16 +56,16 @@ const Services = () => {
 
 
 
-    // const clickedService = (service) => {
+    const clickedService = (service) => {
 
-    //     //Guardo la service seleccionada en redux.
+        //Guardo la service seleccionada en redux.
 
-    //     dispatch(addService({ ...service, details: service }));
+        dispatch(addService({ ...service, details: service }));
 
-    //     setTimeout(() => {
-    //         navigate("/servicesView");
-    //     }, 750);
-    // }
+        setTimeout(() => {
+            navigate("/serviceDetail");
+        }, 750);
+    }
 
     const clickedServiceGoal = (e) => {
         setCriteria((prevState) => ({
@@ -151,15 +152,15 @@ const Services = () => {
     if (services.length === 0) {
         return (
             <Container fluid className="servicesDesign" >
-                <Row>
-                    <Col>
+                <Row className="preServices h-50">
+                    <Col className="preServices">
                         <div>
                             <h1>Nuestros Servicios</h1>
                             <h3>Sea cual sea su objetivo, tenemos servicios a la altura. Somos expertos en Growth Marketing. ¿Cómo podemos llevarte al éxito?</h3>
 
                         </div>
                     </Col>
-                    <Col>
+                    <Col className="preServices">
                         <Container>
                             <Row>
                                 <Col>
@@ -207,15 +208,15 @@ const Services = () => {
     } else {
         return (
             <Container fluid className="servicesDesign" >
-                <Row>
-                    <Col>
+                <Row className="preServices h-50">
+                    <Col className="preServices">
                         <div>
                             <h1>Nuestros Servicios</h1>
                             <h3>Sea cual sea su objetivo, tenemos servicios a la altura. Somos expertos en Growth Marketing. ¿Cómo podemos llevarte al éxito?</h3>
 
                         </div>
                     </Col>
-                    <Col>
+                    <Col className="preServices">
                         <Container>
                             <Row>
                                 <Col>
@@ -260,7 +261,7 @@ const Services = () => {
                     {
                 services.map(service => {
                     return (
-                        <Card style={{ width: '12rem' }} className="cards" key={service.id_service}>
+                        <Card onClick={() => clickedService(service)} style={{ width: '12rem' }} className="cards" key={service.id_service}>
                         <Card.Img className='imgCards' variant="top" src={`https://robohash.org/YOUR-TE${service.type}dsXT.png`} />
                         <Card.Body>
                             {/* <Card.Title>{service.film.title}</Card.Title> */}
@@ -271,6 +272,7 @@ const Services = () => {
                                     Nombre: {service.name} <br></br>
                                     Precio: {service.price} €
                             </Card.Text>
+                            <Button className="buttonSearch" variant="warning" size="lg" active  onClick={() => clickedService(service)} name="web">Digitalización</Button>
                         </Card.Body>
                     </Card>
                     )

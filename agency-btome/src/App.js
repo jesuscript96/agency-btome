@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Importaciones de containers y componentes
 import Header from './components/header/header.jsx';
 import Services from './containers/services/services';
+import ServicesDetail from './containers/servicesDetail/servicesDetail';
 
 function App() {
   
@@ -18,18 +19,17 @@ function App() {
     <div className="App">
 
       {/* Genero el entorno de React Router Dom para el enrutado de vistas y componentes */}
-{/*       
+      
       <BrowserRouter>    
       <Header/>
       
         
         <Routes>
-          <Services/>
-           
+        <Route path="/" element={<Services/>} />;
+          <Route path="/serviceDetail" element={<ServicesDetail/>} />;
         </Routes>
 
-      </BrowserRouter> */}
-      <Services/>
+      </BrowserRouter>
     </div>
   );
 }
