@@ -8,6 +8,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Importaciones de containers y componentes
+import Header from './components/header/header.jsx';
 
 function App() {
   
@@ -17,7 +18,9 @@ function App() {
 
       {/* Genero el entorno de React Router Dom para el enrutado de vistas y componentes */}
       
-      <BrowserRouter>     
+      <BrowserRouter>    
+      <Header/>
+      
         
         <Routes>
         {/* La parte cambiante es lo que contiene Routes DENTRO */}
