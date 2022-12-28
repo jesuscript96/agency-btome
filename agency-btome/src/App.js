@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Importaciones de containers y componentes
 import Header from './components/header/header.jsx';
+import Services from './containers/services/services';
+import ServicesDetail from './containers/servicesDetail/servicesDetail';
 
 function App() {
   
@@ -23,14 +25,11 @@ function App() {
       
         
         <Routes>
-        {/* La parte cambiante es lo que contiene Routes DENTRO */}
-
-            {/* Cada Route contendrá una vista..... */} 
-           
+        <Route path="/" element={<Services/>} />;
+          <Route path="/serviceDetail" element={<ServicesDetail/>} />;
         </Routes>
 
       </BrowserRouter>
-
     </div>
   );
 }

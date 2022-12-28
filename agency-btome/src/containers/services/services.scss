@@ -1,0 +1,56 @@
+.servicesDesign {
+    min-height: 100vh;
+   
+    background-image: linear-gradient(75deg, #f6d365 0%, #fda085 100%);
+   
+};
+
+.preServices {
+    width: 50vw;
+    display: flex;
+}
+
+
+.servicePic {
+//width: 10vw;
+margin: 2em;
+height: 55vh;
+border-radius: 1em;
+box-shadow: 18px 18px 10px  rgba(6, 6, 6, 0.3);
+};
+
+.servicePic:hover{
+
+transform: scale(1.2);
+box-shadow: 14px 14px 20px 0 rgba(20, 20, 20, 0.3);
+transition: 0.7s;
+
+}
+
+.searchDesign{
+    margin-top: 1em;
+    width: 40em;
+    
+}
+
+.spinner {
+    height: 70vh;
+    width: 100vw;
+    text-align: center;
+    justify-content: center;
+}
+
+.buttonSearch {
+    width: 3em;
+    background-color:white ;
+    border-radius: 2em;
+    text-size-adjust: auto;
+}
+
+
+.spinnerDesign {
+
+    margin-top: 10em;
+    height: 5em;
+    width: 5em;
+}
