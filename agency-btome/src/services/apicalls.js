@@ -50,11 +50,11 @@ export const bringServices = () => {
     }
 };
 
-export const bringFilteredServices = (type) => {
+export const bringFilteredServices = (type, price) => {
 
     try {
 
-        return axios.get(`http://localhost:3000/services/type/${type}/price(${price})`);
+        return axios.get(`http://localhost:3000/services/type/${type}/price/${price}`);
 
 
     } catch (error) {

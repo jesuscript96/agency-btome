@@ -2,20 +2,22 @@ import React from "react";
 import "../services/services.scss";
 import { useNavigate } from "react-router-dom";
 import { bringServices, bringFilteredServices } from '../../services/apicalls'
+import { errorCheck } from '../../services/useful';
 import { useState } from "react";
 import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 import { Col, Container, Image, Row, Spinner } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
 
 
 
 const Services = () => {
-    const dispatch = useDispatch();
-    let navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // let navigate = useNavigate();
 
     const [services, setServices] = useState([]);
     const [criteria, setCriteria] = useState({
@@ -26,15 +28,15 @@ const Services = () => {
         priceError: ""
     })
 
-    setCriteria((prevState) => ({
-        ...prevState,
-        price: e.target.value
-
-    }))
+    
 
     const inputHandler = (e) => {
 
-        setCriteria(e.target.value);
+        setCriteria((prevState) => ({
+            ...prevState,
+            price: e.target.value
+
+        }));
     }
 
     const errorHandler = (field, value, type) => {
@@ -64,7 +66,7 @@ const Services = () => {
     //     }, 750);
     // }
 
-    const clickedServiceGoal = () => {
+    const clickedServiceGoal = (e) => {
         setCriteria((prevState) => ({
             ...prevState,
             goal: e.target.name
@@ -79,13 +81,6 @@ const Services = () => {
 
             }
         );
-    }
-
-    const filterServices = (type) => {
-        bringFilteredServices(type)
-            .then(res => {
-                setServices(res.data)
-            })
     }
 
     useEffect(() => {
@@ -119,13 +114,15 @@ const Services = () => {
 
 
 
-        if (criteria !== '') {
+        if (criteria.goal !== '') {
 
             //Voy a aplicar mi proceso de debounce....
 
+            console.log(criteria.goal, criteria.price)
+
             const bring = setTimeout(() => {
 
-                bringFilteredServices(criteria)
+                bringFilteredServices(criteria.goal, criteria.price)
                     .then(res => {
 
                         setServices(res.data)
@@ -137,8 +134,8 @@ const Services = () => {
 
             return () => clearTimeout(bring);
 
-        } else if (criteria === '') {
-            bringservices().then(
+        } else if (criteria.goal === '') {
+            bringServices().then(
                 (res) => {
                     setServices(res.data)
 
@@ -149,7 +146,7 @@ const Services = () => {
     }, [criteria])
 
 
-
+    console.log(services)
 
     if (services.length === 0) {
         return (
@@ -168,9 +165,9 @@ const Services = () => {
                                 <Col>
                                     <h3>Propósito:</h3>
                                 </Col>
-                                <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={clickedServiceGoal} name="sem">Crecimiento rápido</Button></Col>
-                                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={clickedServiceGoal} name="seo">Marca digital</Button></Col>
-                                <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={clickedServiceGoal} name="web">Digitalización</Button></Col>
+                                <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
+                                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
+                                <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
                             </Row>
                             <Row>
                                 <Col>
@@ -194,9 +191,9 @@ const Services = () => {
                 <Row   >
 
                     <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button></Col>
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={filterServices(e.target.name)} name="sem">Crecimiento rápido</Button></Col>
-                    <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={filterServices(e.target.name)} name="seo">Marca digital</Button></Col>
-                    <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={filterServices(e.target.name)} name="web">Digitalización</Button></Col>
+                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
+                    <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
+                    <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
 
                 </Row>
 
@@ -224,9 +221,9 @@ const Services = () => {
                                 <Col>
                                     <h3>Propósito:</h3>
                                 </Col>
-                                <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={clickedServiceGoal} name="sem">Crecimiento rápido</Button></Col>
-                                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={clickedServiceGoal} name="seo">Marca digital</Button></Col>
-                                <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={clickedServiceGoal} name="web">Digitalización</Button></Col>
+                                <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
+                                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
+                                <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
                             </Row>
                             <Row>
                                 <Col>
@@ -250,9 +247,9 @@ const Services = () => {
                 <Row   >
 
                     <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button></Col>
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={filterServices(e.target.name)} name="sem">Crecimiento rápido</Button></Col>
-                    <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={filterServices(e.target.name)} name="seo">Marca digital</Button></Col>
-                    <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={filterServices(e.target.name)} name="web">Digitalización</Button></Col>
+                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
+                    <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
+                    <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
 
                 </Row>
 
@@ -261,17 +258,24 @@ const Services = () => {
                     {/* Here I proceed to MAP the hook which contains all the Services */}
 
                     {
-                        services.map(service => (<Col>
-
-
-
-                            <Image className="servicePic " src={service.poster} 
-                            // onClick={() => clickedservice(service)} 
-                            key={service.id} />
-
-                        </Col>
-                        ))
-                    }
+                services.map(service => {
+                    return (
+                        <Card style={{ width: '12rem' }} className="cards" key={service.id_service}>
+                        <Card.Img className='imgCards' variant="top" src={`https://robohash.org/YOUR-TE${service.type}dsXT.png`} />
+                        <Card.Body>
+                            {/* <Card.Title>{service.film.title}</Card.Title> */}
+                            <Card.Text>
+                                {service.type}
+                            </Card.Text>
+                            <Card.Text>
+                                    Nombre: {service.name} <br></br>
+                                    Precio: {service.price} €
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    )
+                })
+            }
 
 
 
@@ -286,6 +290,8 @@ const Services = () => {
 }
 
 export default Services
+
+
 
 
 
