@@ -272,7 +272,7 @@ const Services = () => {
                                     Nombre: {service.name} <br></br>
                                     Precio: {service.price} €
                             </Card.Text>
-                            <Button className="buttonSearch" variant="warning" size="lg" active  onClick={() => clickedService(service)} name="web">Digitalización</Button>
+                            <Button className="buttonSearch" variant="warning" size="lg" active  onClick={() => clickedService(service)} name="web">+Info</Button>
                         </Card.Body>
                     </Card>
                     )

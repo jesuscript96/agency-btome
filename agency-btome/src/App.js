@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header/header.jsx';
 import Services from './containers/services/services';
 import ServicesDetail from './containers/servicesDetail/servicesDetail';
+import Pils from './containers/pils/pils';
+import PilsDetail from './containers/pilsDetail/pilsDetail';
 
 function App() {
   
@@ -26,7 +28,9 @@ function App() {
         
         <Routes>
         <Route path="/" element={<Services/>} />;
-          <Route path="/serviceDetail" element={<ServicesDetail/>} />;
+          <Route path="/servicedetail" element={<ServicesDetail/>} />;
+        <Route path="/blog" element={<Pils/>} />;
+        <Route path="/pilsdetail" element={<PilsDetail/>} />;
         </Routes>
 
       </BrowserRouter>
