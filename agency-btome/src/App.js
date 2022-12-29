@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header/header.jsx';
 import Services from './containers/services/services';
 import ServicesDetail from './containers/servicesDetail/servicesDetail';
-import Pils from './containers/pils/pils';
+import Pils from './containers/pils/pils.jsx';
 import PilsDetail from './containers/pilsDetail/pilsDetail';
 
 function App() {

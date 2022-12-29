@@ -5,18 +5,49 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { userout } from "../user/userSlice";
+import Register from '../user/register';
+import Login from '../user/login';
+import Button from 'react-bootstrap/Button';
 
 
 function OffcanvasExample() {
-  
-   let userMailHeader = localStorage.getItem('SAVEUSERMAIL');
 
-  
-  if (userMailHeader !== null){
+  const dispatch = useDispatch();
+
+  const [modalShow, setModalShow] = useState(false);
+  const [logged, setLogged] = useState(true);
+
+   useEffect(() => {
+     
+        
+    });
+
+  let userMailHeader = localStorage.getItem('SAVEUSERMAIL');
+
+  const logOut = () => {
+    localStorage.removeItem("SAVEUSERROLE")
+    localStorage.removeItem("SAVEUSERMAIL")
+    localStorage.removeItem("SAVEJWT")
+    dispatch(userout({
+      credentials: {
+        token: "",
+        mail: "",
+        role: ""
+      }
+    }))
+    setLogged(false)
+  }
+
+
+  if (userMailHeader !== null) {
     return (
-        <>
-          {
-          [ 'lg'].map((expand) => (
+      <>
+        {
+          ['lg'].map((expand) => (
             <Navbar key={expand} bg="#a18cd1" expand={expand} className=" navbarDesign sticky-top" variant="variant">
               <Container fluid>
                 <Navbar.Brand className='logoDesign' href="/">BusinessToMe</Navbar.Brand>
@@ -40,31 +71,31 @@ function OffcanvasExample() {
                       <NavDropdown className='variant'
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                      
+
                         <NavDropdown.Item>
-                        {userMailHeader}
+                          {userMailHeader}
                         </NavDropdown.Item>
                         <NavDropdown.Item>
                           Perfil
                         </NavDropdown.Item>
-                        <NavDropdown.Item>
+                        <NavDropdown.Item onClick={logOut}>
                           Cerrar sesión
                         </NavDropdown.Item>
                       </NavDropdown>
                     </Nav>
-                  
+
                   </Offcanvas.Body>
                 </Navbar.Offcanvas>
               </Container>
             </Navbar>
           ))}
-        </>
-      );
+      </>
+    );
   } else {
     return (
-        <>
-          {
-          [ 'lg'].map((expand) => (
+      <>
+        {
+          ['lg'].map((expand) => (
             <Navbar key={expand} bg="#a18cd1" expand={expand} className=" navbarDesign sticky-top" variant="variant">
               <Container fluid>
                 <Navbar.Brand className='logoDesign' href="/">BusinessToMe</Navbar.Brand>
@@ -88,22 +119,30 @@ function OffcanvasExample() {
                       <NavDropdown className='variant'
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                        <NavDropdown.Item>
-                          Registro
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
+                        <Button variant="primary" onClick={() => setModalShow(true)}>
+                          Register
+                        </Button>
+                        <Register
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                        />
+                        <Button variant="primary" onClick={() => setModalShow(true)}>
                           Login
-                        </NavDropdown.Item>
+                        </Button>
+                        <Login
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                        />
                       </NavDropdown>
                     </Nav>
-                  
+
                   </Offcanvas.Body>
                 </Navbar.Offcanvas>
               </Container>
             </Navbar>
           ))}
-        </>
-      );
+      </>
+    );
 
   }
 }

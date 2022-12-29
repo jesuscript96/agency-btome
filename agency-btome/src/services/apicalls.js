@@ -1,42 +1,42 @@
 
 import axios from 'axios';
 
-// export const loginUser = async (body, res) => {
+export const loginUser = async (body, res) => {
 
-//     try {
-//         let resp = await axios.post(
-//             "https://proyecto04-videoclub-production-4de8.up.railway.app/auth/login",
-//             body
-//         );
+    try {
+        let resp = await axios.post(
+            "http://localhost:3000/auth/login",
+            body
+        );
         
     
-//         if (resp.data === "Password or email is incorrect") {
-//             return "El email o la contraseña son incorrectos"
+        if (resp.data === "Password or email is incorrect") {
+            return "El email o la contraseña son incorrectos"
     
-//         } else if (resp.data.message === "Login successful") {
-//             return resp
-//         }
-//     } catch (error) {
+        } else if (resp.data.message === "Login successful") {
+            return resp
+        }
+    } catch (error) {
        
-//         return error.response
-//     }
+        return error.response
+    }
 
     
-// };
+};
 
-// export const registerUser = async (body) => {
+export const registerUser = async (body) => {
 
     
 
-//     return axios.post(
-//         "https://proyecto04-videoclub-production-4de8.up.railway.app/auth/register",
-//         body
-//         // {
-//         //     "mail": 'elbanking@punsdhi.com',
-//         //     "password": 'gsdfg34563SFGSF'
-//         //   }
-//     );
-// };
+    return axios.post(
+        "http://localhost:3000/auth/register",
+        body
+        // {
+        //     "mail": 'elbanking@punsdhi.com',
+        //     "password": 'gsdfg34563SFGSF'
+        //   }
+    );
+};
 
 export const bringServices = () => {
 
