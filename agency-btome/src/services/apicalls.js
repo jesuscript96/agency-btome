@@ -62,17 +62,56 @@ export const bringFilteredServices = (type, price) => {
     }
 };
 
-// export const searchFilms = async (criteria) => {
+
+export const bringPils = async () => {
+    
+    
+    try {
+        
+        return await axios.get(`http://localhost:3000/pils/`)
+        
+    } catch (error) {
+        
+    }
+}
+
+export const bringPilsFilteredByName = async (criteria) => {
 
     
-//     try {
+    try {
 
-//         return await axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/films/title/${criteria}`)
+        return await axios.get(`http://localhost:3000/pils/title/${criteria}`)
         
-//     } catch (error) {
+    } catch (error) {
         
-//     }
-// }
+    }
+}
+
+export const bringPilsFilteredByType = async (type) => {
+
+    
+    try {
+
+        return await axios.get(`http://localhost:3000/pils/type/${type}`)
+        
+    } catch (error) {
+        
+    }
+}
+
+export const bringServiceReviews = async (type) => {
+
+    
+    try {
+
+        return await axios.get(`http://localhost:3000/services/reviews/${type}`)
+        
+    } catch (error) {
+        
+    }
+}
+
+
 
 // export const bringUserInfo = (email) => {
 
