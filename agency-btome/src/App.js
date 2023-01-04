@@ -13,6 +13,7 @@ import Services from './containers/services/services';
 import ServicesDetail from './containers/servicesDetail/servicesDetail';
 import Pils from './containers/pils/pils.jsx';
 import PilsDetail from './containers/pilsDetail/pilsDetail';
+import MyAccount from './containers/myAccount/myAccount';
 
 function App() {
   
@@ -31,6 +32,7 @@ function App() {
           <Route path="/servicedetail" element={<ServicesDetail/>} />;
         <Route path="/blog" element={<Pils/>} />;
         <Route path="/pilsdetail" element={<PilsDetail/>} />;
+        <Route path="/myaccount" element={<MyAccount/>} />;
         </Routes>
 
       </BrowserRouter>

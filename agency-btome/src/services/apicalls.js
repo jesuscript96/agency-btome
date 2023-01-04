@@ -113,11 +113,30 @@ export const bringServiceReviews = async (type) => {
 
 
 
-// export const bringUserInfo = (email) => {
+export const bringUserInfo = async (jwt) => {
+    console.log("entro a traer al user")
+    console.log(jwt)
+    return await axios.get("http://localhost:3000/users/profile", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+// .catch(function (error) {
+//   if (error.response) {
+//     // Request made and server responded
+//     console.log(error.response.data);
+//     console.log(error.response.status);
+//     console.log(error.response.headers);
+//   } else if (error.request) {
+//     // The request was made but no response was received
+//     console.log(error.request);
+//   } else {
+//     // Something happened in setting up the request that triggered an Error
+//     console.log('Error', error.message);
+//   }
 
-//     return axios.get("https://proyecto04-videoclub-production-4de8.up.railway.app/users/id/" + email)
-
-// };
+// });
+};
 
 // export const bringUserOrders = (email) => {
 
@@ -155,20 +174,20 @@ export const bringServiceReviews = async (type) => {
 
 // };
 
-// export const orderFilm = async (movie) => {
-//     const jwt = localStorage.getItem("SAVEJWT")
-//     let config = {
-//         headers: {
-//             Authorization: `Bearer ${jwt}`,
-//             'Access-Control-Allow-Origin': '*',
-//             'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
-//             'Access-Control-Allow-Methods': '*',
-//             "Content-Type": "application/json"
-//         }
+export const orderFilm = async (movie) => {
+    const jwt = localStorage.getItem("SAVEJWT")
+    let config = {
+        headers: {
+            Authorization: `Bearer ${jwt}`,
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
+            'Access-Control-Allow-Methods': '*',
+            "Content-Type": "application/json"
+        }
 
-//     }
-//     return await axios.post(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/neworder`,movie,config)
-// };
+    }
+    return await axios.post(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/neworder`,movie,config)
+};
 
 // export const bringOneFilm = (film) => {
 //         return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/films/title/${film}`)

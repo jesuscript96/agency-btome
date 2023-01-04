@@ -1,6 +1,7 @@
 import React from 'react';
 import './header.scss'
 import { Container, Row, Col } from 'react-bootstrap';
+import * as Icon from 'react-bootstrap-icons';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -8,10 +9,13 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { userout } from "../user/userSlice";
-import Register from '../user/register';
-import Login from '../user/login';
+import { chartData } from "../../containers/services/chartSlice";
+import Register from '../user/register/register';
+import Login from '../user/login/login';
 import Button from 'react-bootstrap/Button';
+import Cart from '../cart/cart';
 
 
 function OffcanvasExample() {
@@ -19,14 +23,22 @@ function OffcanvasExample() {
   const dispatch = useDispatch();
 
   const [modalShow, setModalShow] = useState(false);
+  const [show, setShow] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const [logged, setLogged] = useState(true);
 
-   useEffect(() => {
-     
-        
-    });
+  useEffect(() => {
+
+
+  });
 
   let userMailHeader = localStorage.getItem('SAVEUSERMAIL');
+
+  const chartAdded = useSelector(chartData);
+  console.log(chartAdded)
+  console.log(chartAdded.lenght)
+  console.log(chartAdded.details)
+  console.log(chartAdded.details.length)
 
   const logOut = () => {
     localStorage.removeItem("SAVEUSERROLE")
@@ -67,7 +79,12 @@ function OffcanvasExample() {
                       <Nav.Link>Home</Nav.Link>
                       <Nav.Link>Servicios</Nav.Link>
                       <Nav.Link>Blog</Nav.Link>
-                      <Nav.Link>Conócenos</Nav.Link>
+                      <Nav.Link>Conócenos</Nav.Link><Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
+                      <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
+                      <Cart
+                          show={showCart}
+                          onHide={() => setShowCart(false)}
+                        />
                       <NavDropdown className='variant'
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
@@ -116,20 +133,26 @@ function OffcanvasExample() {
                       <Nav.Link>Servicios</Nav.Link>
                       <Nav.Link>Blog</Nav.Link>
                       <Nav.Link>Conócenos</Nav.Link>
+                      <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
+                      <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
+                      <Cart
+                          show={showCart}
+                          onHide={() => setShowCart(false)}
+                        />
                       <NavDropdown className='variant'
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
+                        <Button variant="primary" onClick={() => setShow(true)}>
+                          Login
+                        </Button>
+                        <Login
+                          show={show}
+                          onHide={() => setShow(false)}
+                        />
                         <Button variant="primary" onClick={() => setModalShow(true)}>
                           Register
                         </Button>
                         <Register
-                          show={modalShow}
-                          onHide={() => setModalShow(false)}
-                        />
-                        <Button variant="primary" onClick={() => setModalShow(true)}>
-                          Login
-                        </Button>
-                        <Login
                           show={modalShow}
                           onHide={() => setModalShow(false)}
                         />

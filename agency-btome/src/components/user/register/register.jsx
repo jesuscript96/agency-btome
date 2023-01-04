@@ -1,15 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import "./login.scss";
-import { loginUser } from '../../services/apicalls';
+import "./register.scss";
+import { loginUser, registerUser } from '../../../services/apicalls';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import { login } from "./userSlice";
-import { errorCheck } from '../../services/useful';
+import { login } from "../userSlice";
+import { errorCheck } from '../../../services/useful';
 
-function Login(props) {
+function Register(props) {
 
     const dispatch = useDispatch();  
     
@@ -64,51 +64,43 @@ function Login(props) {
 
     //Funciones
 
-    const logMe = () => {
+    const regMe = () => {
+        registerUser(user)
+          .then(res => {            
+            try {
+              loginUser(user)
+                  .then(res => {
+                      //Aqui procedo a guardar el token en redux, o en alguna otra parte del proyecto
+    
+                      if (res.data.message === "Password or email is incorrect") {
+                         
+                      } else {
+                          localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
+                          localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
+                          if (res.data.role === null) {
+                              localStorage.setItem("SAVEUSERROLE", "userRole")
+                          } else {
+                              localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.role))
+                          }
+                          
+    
+                          dispatch(login({
+                              credentials: {
+                                  token: res.data.jwt,
+                                  mail: res.data.mail,
+                                  role: res.data.role
+                              }
+                          }));
 
-        //Estoy ejecutando loginUser y le paso el body (que en este caso es el hook user)
-       
-        try {
-            loginUser(user)
-                .then(res => {
-                    //Aqui procedo a guardar el token en redux, o en alguna otra parte del proyecto
-                   
-
-                    if (res.data.message === "Password or email is incorrect") {
-                        setUserError(((prevState) => ({
-                            ...prevState,
-                            LoginError: "El email o la contraseña son incorrectos"
-
-                        })))
-                    } else {
-                        localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
-                        localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
-                        if (res.data.role === null) {
-                            localStorage.setItem("SAVEUSERROLE", "userRole")
-                        } else {
-                            localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.role))
-                        }
-                        
-
-                        dispatch(login({
-                            credentials: {
-                                token: res.data.jwt,
-                                mail: res.data.mail,
-                                role: res.data.role
-                            }
-                        }));
-                        setUserError(((prevState) => ({
-                            ...prevState,
-                            LoginError: ""
-
-                        })))
-                    }
-                });
-        } catch (error) {
-           
-        }
-
-    }
+                          Navigate("/");
+                          
+                      }
+                  });
+          } catch (error) {
+             
+          }
+          })
+      }
 
 
   return (
@@ -120,12 +112,12 @@ function Login(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Login
+          Register
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
       <div className='loginDesign'>
-            <pre>Bienvenido de nuevo</pre>
+            <pre>Regístrate para obtener beneficios!</pre>
 
             <div className="inputsContainer">
                 <div className="errorInput">{userError.LoginError}</div>
@@ -139,7 +131,7 @@ function Login(props) {
                 </div>
             </div>
             <div>
-            <Button onClick={() => logMe()} className="buttonDesignLogin">Login</Button>
+            <Button onClick={() => regMe()} className="buttonDesignLogin">Register</Button>
             </div>
 
         </div>
@@ -151,4 +143,4 @@ function Login(props) {
   );
 }
 
-export default Login
+export default Register

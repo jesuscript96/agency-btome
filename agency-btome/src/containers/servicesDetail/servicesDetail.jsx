@@ -58,8 +58,13 @@ const ServicesDetail = () => {
   const addToChartOnClick = (service) => {
     console.log("carreando")
     //Guardo la service seleccionada en redux.
+    console.log(service)
     console.log(service.id_service)
-    dispatch(addServiceToChart({ ...service, details: service }));
+    dispatch(addServiceToChart({ 
+      details: service.id_service,
+      name: service.name,
+      price: service.price
+     }));
 
     setTimeout(() => {
       console.log("he dispachao")
@@ -72,10 +77,16 @@ const ServicesDetail = () => {
 
   const chartAdded = useSelector(chartData);
   console.log(chartAdded)
-  console.log(reviews)
-  console.log(JSON.stringify(reviews))
-  console.log(reviews.text)
-  console.log(JSON.stringify(reviews.text))
+  console.log(chartAdded.lenght)
+  console.log(chartAdded.details)
+  console.log(chartAdded.details.length)
+  // console.log(JSON.stringify(chartAdded))
+  // console.log(chartAdded.details.lenght)
+  // console.log(JSON.stringify(chartAdded.lenght))
+  // console.log(reviews)
+  // console.log(JSON.stringify(reviews))
+  // console.log(reviews.text)
+  // console.log(JSON.stringify(reviews.text))
 
   if (selectedService?.id_service !== undefined) {
 

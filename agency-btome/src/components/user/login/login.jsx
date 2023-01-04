@@ -1,15 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import "./register.scss";
-import { loginUser, registerUser } from '../../services/apicalls';
+import "./login.scss";
+import { loginUser } from '../../../services/apicalls';
 import { Navigate, useNavigate } from 'react-router-dom';
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import { login } from "./userSlice";
-import { errorCheck } from '../../services/useful';
+import { login } from "../userSlice";
+import { errorCheck } from '../../../services/useful';
 
-function Register(props) {
+function Login(props) {
 
     const dispatch = useDispatch();  
     
@@ -64,43 +64,51 @@ function Register(props) {
 
     //Funciones
 
-    const regMe = () => {
-        registerUser(user)
-          .then(res => {            
-            try {
-              loginUser(user)
-                  .then(res => {
-                      //Aqui procedo a guardar el token en redux, o en alguna otra parte del proyecto
-    
-                      if (res.data.message === "Password or email is incorrect") {
-                         
-                      } else {
-                          localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
-                          localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
-                          if (res.data.role === null) {
-                              localStorage.setItem("SAVEUSERROLE", "userRole")
-                          } else {
-                              localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.role))
-                          }
-                          
-    
-                          dispatch(login({
-                              credentials: {
-                                  token: res.data.jwt,
-                                  mail: res.data.mail,
-                                  role: res.data.role
-                              }
-                          }));
+    const logMe = () => {
 
-                          Navigate("/");
-                          
-                      }
-                  });
-          } catch (error) {
-             
-          }
-          })
-      }
+        //Estoy ejecutando loginUser y le paso el body (que en este caso es el hook user)
+       
+        try {
+            loginUser(user)
+                .then(res => {
+                    //Aqui procedo a guardar el token en redux, o en alguna otra parte del proyecto
+                   
+
+                    if (res.data.message === "Password or email is incorrect") {
+                        setUserError(((prevState) => ({
+                            ...prevState,
+                            LoginError: "El email o la contraseña son incorrectos"
+
+                        })))
+                    } else {
+                        localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
+                        localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
+                        if (res.data.role === null) {
+                            localStorage.setItem("SAVEUSERROLE", "userRole")
+                        } else {
+                            localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.role))
+                        }
+                        
+
+                        dispatch(login({
+                            credentials: {
+                                token: res.data.jwt,
+                                mail: res.data.mail,
+                                role: res.data.role
+                            }
+                        }));
+                        setUserError(((prevState) => ({
+                            ...prevState,
+                            LoginError: ""
+
+                        })))
+                    }
+                });
+        } catch (error) {
+           
+        }
+
+    }
 
 
   return (
@@ -112,7 +120,7 @@ function Register(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Register
+          Login
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -131,7 +139,7 @@ function Register(props) {
                 </div>
             </div>
             <div>
-            <Button onClick={() => regMe()} className="buttonDesignLogin">Register</Button>
+            <Button onClick={() => logMe()} className="buttonDesignLogin">Login</Button>
             </div>
 
         </div>
@@ -143,4 +151,4 @@ function Register(props) {
   );
 }
 
-export default Register
+export default Login
