@@ -79,12 +79,13 @@ function OffcanvasExample() {
                       <Nav.Link>Home</Nav.Link>
                       <Nav.Link>Servicios</Nav.Link>
                       <Nav.Link>Blog</Nav.Link>
-                      <Nav.Link>Conócenos</Nav.Link><Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
+                      <Nav.Link>Conócenos</Nav.Link>
+                      <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
                       <Cart
-                          show={showCart}
-                          onHide={() => setShowCart(false)}
-                        />
+                        show={showCart}
+                        onHide={() => setShowCart(false)}
+                      />
                       <NavDropdown className='variant'
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
@@ -99,6 +100,14 @@ function OffcanvasExample() {
                           Cerrar sesión
                         </NavDropdown.Item>
                       </NavDropdown>
+                      <Login
+                        show={show}
+                        onHide={() => setShow(false)}
+                      />
+                      <Register
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                      />
                     </Nav>
 
                   </Offcanvas.Body>
@@ -136,9 +145,9 @@ function OffcanvasExample() {
                       <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
                       <Cart
-                          show={showCart}
-                          onHide={() => setShowCart(false)}
-                        />
+                        show={showCart}
+                        onHide={() => setShowCart(false)}
+                      />
                       <NavDropdown className='variant'
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>

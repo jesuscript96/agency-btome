@@ -7,6 +7,7 @@ import { chartData } from "../../containers/services/chartSlice";
 import { useSelector } from "react-redux";
 import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { newOrder, addServiceToOrder } from "../../services/apicalls"
 
 function Cart(props) {
 
@@ -16,6 +17,44 @@ function Cart(props) {
 
 
     });
+
+    const orderServices = () => {
+        createNewOrder()
+            .then(res => {
+                const userJWT = JSON.parse(localStorage.getItem("SAVEJWT"))    
+                console.log(chartAdded.details)           
+                chartAdded.details.map(service => {
+                    console.log(service)
+                    console.log(res.data)
+                    console.log(res.data.id_order)
+                    let addServiceBody = {
+                        "orderIdOrder": res.data,
+                        "serviceIdService": service.details
+                      }
+                    addServiceToOrder(addServiceBody, userJWT)
+                })
+
+            })
+
+    }
+
+    const createNewOrder = () => {
+        try {
+            const userJWT = JSON.parse(localStorage.getItem("SAVEJWT"))
+            let today = new Date();
+            let date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+            let orderBody = {
+                "order_date": date
+            }
+
+            let resp = newOrder(orderBody, userJWT)
+            //   setTimeout(() => {
+            //     navigate("/myaccount");
+            // }, 750);
+            return resp
+        } catch (error) { }
+    }
+
 
     console.log(chartAdded.details)
 
@@ -49,7 +88,7 @@ function Cart(props) {
                                             <div className="fw-bold">{service.name}</div>
                                         </div>
                                         <Badge bg="primary" pill>
-                                        {service.price}€
+                                            {service.price}€
                                         </Badge>
                                     </ListGroup.Item>
                                 )
@@ -58,8 +97,8 @@ function Cart(props) {
                     </ListGroup>
                     <div>
                         <Button
-                        //  onClick={() => logMe()} 
-                         className="buttonDesignLogin">Tramitar pedido</Button>
+                             onClick={() => orderServices()} 
+                            className="buttonDesignLogin">Tramitar pedido</Button>
                     </div>
 
                 </div>

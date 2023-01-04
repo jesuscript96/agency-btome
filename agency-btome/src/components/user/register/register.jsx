@@ -92,6 +92,7 @@ function Register(props) {
                               }
                           }));
 
+
                           Navigate("/");
                           
                       }
@@ -131,7 +132,7 @@ function Register(props) {
                 </div>
             </div>
             <div>
-            <Button onClick={() => regMe()} className="buttonDesignLogin">Register</Button>
+            <Button onClick={() => regMe()}  className="buttonDesignLogin">Register</Button>
             </div>
 
         </div>

@@ -27,12 +27,12 @@ function Login(props) {
     let navigate = useNavigate();
     useEffect(() => {
      
-        let loged = localStorage.getItem("SAVEUSERMAIL")
+        // let loged = localStorage.getItem("SAVEUSERMAIL")
        
 
-        if (loged) {          // TODO: redireccionar a una vista que diga que no puede acceder a registro si ya está logueado con un timeout y que luego redireccione a home            
-            navigate("/");
-        };
+        // if (loged) {          // TODO: redireccionar a una vista que diga que no puede acceder a registro si ya está logueado con un timeout y que luego redireccione a home            
+        //     navigate("/");
+        // };
     });
 
     //Handlers
@@ -86,7 +86,9 @@ function Login(props) {
                         if (res.data.role === null) {
                             localStorage.setItem("SAVEUSERROLE", "userRole")
                         } else {
-                            localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.role))
+                            console.log(JSON.stringify(res.data.roleIdRole))
+                            console.log(res.data)
+                            localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.roleIdRole))
                         }
                         
 
@@ -94,7 +96,7 @@ function Login(props) {
                             credentials: {
                                 token: res.data.jwt,
                                 mail: res.data.mail,
-                                role: res.data.role
+                                role: res.data.roleIdRole
                             }
                         }));
                         setUserError(((prevState) => ({

@@ -138,58 +138,64 @@ export const bringUserInfo = async (jwt) => {
 // });
 };
 
-// export const bringUserOrders = (email) => {
-
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/${email}`)
-
-// };
-
-// export const bringUserActiveOrders = (email) => {
-
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/active/${email}`)
-
-// };
-
-// export const bringAllOrders = () => {
-
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/`)
-
-// };
-
-// export const bringActiveAllOrders = () => {
-
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/active/orders/all`)
-
-// };
-
-// export const bringAllUsers = () => {
-
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/users/`)
-
-// };
-
-// export const deleteUser = (email) => {
-
-//     return axios.delete("https://proyecto04-videoclub-production-4de8.up.railway.app/users/delete/" + email)
-
-// };
-
-export const orderFilm = async (movie) => {
-    const jwt = localStorage.getItem("SAVEJWT")
-    let config = {
+export const newOrder = async (order, jwt) => {
+    return await axios.post("http://localhost:3000/orders/neworder", order, {
         headers: {
-            Authorization: `Bearer ${jwt}`,
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
-            'Access-Control-Allow-Methods': '*',
-            "Content-Type": "application/json"
+          'Authorization': `Bearer ${jwt}`
         }
-
-    }
-    return await axios.post(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/neworder`,movie,config)
+      })
 };
 
-// export const bringOneFilm = (film) => {
-//         return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/films/title/${film}`)
-   
-//     }
+export const addServiceToOrder = async (order, jwt) => {
+    return await axios.post("http://localhost:3000/orders/addservice", order, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      })
+};
+
+export const bringUserOrders = async (jwt) => {
+
+    return await axios.get("http://localhost:3000/users/orders", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
+
+export const bringUserReviews = async (jwt) => {
+
+    return await axios.get("http://localhost:3000/users/reviews", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
+
+export const bringAllUsers = async (jwt) => {
+
+    return await axios.get("http://localhost:3000/users/", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
+
+export const deleteUser = async (email, jwt) => {
+
+    return await axios.delete("http://localhost:3000/users/delete/" + email, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      })
+
+};
+
+export const bringAllOrders = async (jwt) => {
+
+    return await axios.get("http://localhost:3000/orders/", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
