@@ -1,4 +1,5 @@
 import Tab from 'react-bootstrap/Tab';
+import jwt_decode from "jwt-decode";
 import Tabs from 'react-bootstrap/Tabs';
 import AllOrders from '../admin/allOrders/allOrders';
 import AllUsers from '../admin/allUsers/allUsers';
@@ -7,10 +8,13 @@ import UserReviews from '../user/userReviews/userReviews';
 
 function TabsProfileInfo() {
 
-    const userRole = localStorage.getItem("SAVEUSERROLE")
+    // const userRole = localStorage.getItem("SAVEUSERROLE")
     console.log(userRole)
+    let jwt = localStorage.getItem('SAVEJWT');
+  let decoded = jwt_decode(jwt)
+  let userRole = decoded.roleIdRole
 
-    if (userRole === "userRole" || userRole === "2" || userRole === "undefined") {
+    if (userRole === 2 || userRole === "2" || userRole === "undefined") {
         return <div className="myAccountDesign">
             <Tabs
                 defaultActiveKey="home"
@@ -27,7 +31,7 @@ function TabsProfileInfo() {
             </Tabs>
         </div>
     }
-    else if (userRole === "1") {
+    else if (userRole === "1" || userRole === 1) {
         return <div className="myAccountDesign">
             <Tabs
                 defaultActiveKey="home"

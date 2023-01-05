@@ -23,6 +23,10 @@ function Register(props) {
         passwordError: "",
         LoginError: ""
     })
+
+    const [success, setSuccess] = useState({
+        loginSuccess: ""
+    })
     
     let navigate = useNavigate();
     useEffect(() => {
@@ -75,6 +79,11 @@ function Register(props) {
                       if (res.data.message === "Password or email is incorrect") {
                          
                       } else {
+                        setSuccess(((prevState) => ({
+                            ...prevState,
+                            loginSuccess: "Register successful. Please close this tab."
+
+                        })))
                           localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
                           localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
                           if (res.data.role === null) {
@@ -133,6 +142,7 @@ function Register(props) {
             </div>
             <div>
             <Button onClick={() => regMe()}  className="buttonDesignLogin">Register</Button>
+            <div className="errorInput">{success.loginSuccess}</div>
             </div>
 
         </div>

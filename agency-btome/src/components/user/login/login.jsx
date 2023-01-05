@@ -23,6 +23,10 @@ function Login(props) {
         passwordError: "",
         LoginError: ""
     })
+
+    const [success, setSuccess] = useState({
+        loginSuccess: ""
+    })
     
     let navigate = useNavigate();
     useEffect(() => {
@@ -79,8 +83,13 @@ function Login(props) {
                             ...prevState,
                             LoginError: "El email o la contraseña son incorrectos"
 
-                        })))
+                        })));                        
                     } else {
+                        setSuccess(((prevState) => ({
+                            ...prevState,
+                            loginSuccess: "Login successful. Please close this tab."
+
+                        })))
                         localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
                         localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
                         if (res.data.role === null) {
@@ -142,6 +151,7 @@ function Login(props) {
             </div>
             <div>
             <Button onClick={() => logMe()} className="buttonDesignLogin">Login</Button>
+                    <div className="errorInput">{success.loginSuccess}</div>
             </div>
 
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.scss'
+import jwt_decode from "jwt-decode";
 import { Container, Row, Col } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 import Nav from 'react-bootstrap/Nav';
@@ -10,6 +11,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { Navigate, useNavigate } from 'react-router-dom';
 import { userout } from "../user/userSlice";
 import { chartData } from "../../containers/services/chartSlice";
 import Register from '../user/register/register';
@@ -22,6 +24,8 @@ function OffcanvasExample() {
 
   const dispatch = useDispatch();
 
+  let navigate = useNavigate();
+
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -33,6 +37,9 @@ function OffcanvasExample() {
   });
 
   let userMailHeader = localStorage.getItem('SAVEUSERMAIL');
+  let jwt = localStorage.getItem('SAVEJWT');
+  let decoded = jwt_decode(jwt)
+  console.log(decoded.roleIdRole)
 
   const chartAdded = useSelector(chartData);
   console.log(chartAdded)
@@ -41,8 +48,6 @@ function OffcanvasExample() {
   console.log(chartAdded.details.length)
 
   const logOut = () => {
-    localStorage.removeItem("SAVEUSERROLE")
-    localStorage.removeItem("SAVEUSERMAIL")
     localStorage.removeItem("SAVEJWT")
     dispatch(userout({
       credentials: {
@@ -76,10 +81,10 @@ function OffcanvasExample() {
                   </Offcanvas.Header>
                   <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-2 pe-5">
-                      <Nav.Link>Home</Nav.Link>
-                      <Nav.Link>Servicios</Nav.Link>
-                      <Nav.Link>Blog</Nav.Link>
-                      <Nav.Link>Conócenos</Nav.Link>
+                      <Nav.Link onClick={navigate("/")}>Home</Nav.Link>
+                      <Nav.Link onClick={navigate("/")}>Servicios</Nav.Link>
+                      <Nav.Link onClick={navigate("/blog")}>Blog</Nav.Link>
+                      <Nav.Link onClick={navigate("/")}>Conócenos</Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
                       <Cart
@@ -91,9 +96,9 @@ function OffcanvasExample() {
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
 
                         <NavDropdown.Item>
-                          {userMailHeader}
+                          {decoded.mail}
                         </NavDropdown.Item>
-                        <NavDropdown.Item>
+                        <NavDropdown.Item onClick={navigate("/myaccount")}>
                           Perfil
                         </NavDropdown.Item>
                         <NavDropdown.Item onClick={logOut}>
@@ -138,10 +143,10 @@ function OffcanvasExample() {
                   </Offcanvas.Header>
                   <Offcanvas.Body className="justify-content-end flex-grow-2">
                     <Nav className="justify-content-end flex-grow-2 pe-5">
-                      <Nav.Link>Home</Nav.Link>
-                      <Nav.Link>Servicios</Nav.Link>
-                      <Nav.Link>Blog</Nav.Link>
-                      <Nav.Link>Conócenos</Nav.Link>
+                      <Nav.Link onClick={navigate("/")}>Home</Nav.Link>
+                      <Nav.Link onClick={navigate("/")}>Servicios</Nav.Link>
+                      <Nav.Link onClick={navigate("/blog")}>Blog</Nav.Link>
+                      <Nav.Link onClick={navigate("/")}>Conócenos</Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
                       <Cart

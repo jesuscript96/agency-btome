@@ -87,6 +87,8 @@ const Services = () => {
     useEffect(() => {
         //This function is triggered when the component is mounted for the first time.
 
+        console.log(services)
+
         if (services.length === 0) {
 
 
@@ -118,6 +120,7 @@ const Services = () => {
         if (criteria.goal !== '') {
 
             //Voy a aplicar mi proceso de debounce....
+            if (services.length === 0) {
 
             console.log(criteria.goal, criteria.price)
 
@@ -134,14 +137,18 @@ const Services = () => {
             }, 150);
 
             return () => clearTimeout(bring);
+        }
 
         } else if (criteria.goal === '') {
+            console.log(services)
+            if (services.length === 0) {
             bringServices().then(
                 (res) => {
                     setServices(res.data)
 
                 }
             );
+            }
         }
 
     }, [criteria])
