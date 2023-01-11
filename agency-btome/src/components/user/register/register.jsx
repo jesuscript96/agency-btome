@@ -34,9 +34,9 @@ function Register(props) {
         let loged = localStorage.getItem("SAVEUSERMAIL")
        
 
-        if (loged) {          // TODO: redireccionar a una vista que diga que no puede acceder a registro si ya está logueado con un timeout y que luego redireccione a home            
-            navigate("/");
-        };
+        // if (loged) {          // TODO: redireccionar a una vista que diga que no puede acceder a registro si ya está logueado con un timeout y que luego redireccione a home            
+        //     navigate("/");
+        // };
     });
 
     //Handlers
@@ -84,15 +84,9 @@ function Register(props) {
                             loginSuccess: "Register successful. Please close this tab."
 
                         })))
+                        
                           localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
-                          localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
-                          if (res.data.role === null) {
-                              localStorage.setItem("SAVEUSERROLE", "userRole")
-                          } else {
-                              localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.role))
-                          }
-                          
-    
+
                           dispatch(login({
                               credentials: {
                                   token: res.data.jwt,
@@ -102,7 +96,7 @@ function Register(props) {
                           }));
 
 
-                          Navigate("/");
+                        //   Navigate("/");
                           
                       }
                   });

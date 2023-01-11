@@ -2,6 +2,7 @@ import React from "react";
 import "./servicesDetail.scss";
 import { Button } from 'antd';
 import Card from 'react-bootstrap/Card';
+import { addSpa } from "../SPA/spaSlice";
 
 import { serviceData } from "../services/serviceSlice";
 import { chartData } from "../services/chartSlice";
@@ -68,7 +69,9 @@ const ServicesDetail = () => {
 
     setTimeout(() => {
       console.log("he dispachao")
-      navigate("/");
+      dispatch(addSpa({
+        details: "services"
+      }))
     }, 750);
 
     console.log("he navegao")
@@ -76,10 +79,10 @@ const ServicesDetail = () => {
   }
 
   const chartAdded = useSelector(chartData);
-  console.log(chartAdded)
-  console.log(chartAdded.lenght)
-  console.log(chartAdded.details)
-  console.log(chartAdded.details.length)
+  // console.log(chartAdded)
+  // console.log(chartAdded.lenght)
+  // console.log(chartAdded.details)
+  // console.log(chartAdded.details.length)
   // console.log(JSON.stringify(chartAdded))
   // console.log(chartAdded.details.lenght)
   // console.log(JSON.stringify(chartAdded.lenght))

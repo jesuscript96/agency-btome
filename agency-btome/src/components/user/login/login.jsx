@@ -90,16 +90,8 @@ function Login(props) {
                             loginSuccess: "Login successful. Please close this tab."
 
                         })))
-                        localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
-                        localStorage.setItem("SAVEUSERMAIL", JSON.stringify(res.data.mail));
-                        if (res.data.role === null) {
-                            localStorage.setItem("SAVEUSERROLE", "userRole")
-                        } else {
-                            console.log(JSON.stringify(res.data.roleIdRole))
-                            console.log(res.data)
-                            localStorage.setItem("SAVEUSERROLE", JSON.stringify(res.data.roleIdRole))
-                        }
                         
+                        localStorage.setItem("SAVEJWT", JSON.stringify(res.data.jwt));
 
                         dispatch(login({
                             credentials: {

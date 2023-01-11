@@ -9,10 +9,10 @@ import UserReviews from '../user/userReviews/userReviews';
 function TabsProfileInfo() {
 
     // const userRole = localStorage.getItem("SAVEUSERROLE")
-    console.log(userRole)
     let jwt = localStorage.getItem('SAVEJWT');
-  let decoded = jwt_decode(jwt)
-  let userRole = decoded.roleIdRole
+    let decoded = jwt_decode(jwt)
+    let userRole = decoded.roleIdRole
+    console.log(userRole)
 
     if (userRole === 2 || userRole === "2" || userRole === "undefined") {
         return <div className="myAccountDesign">

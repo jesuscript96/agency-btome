@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Navigate, useNavigate } from 'react-router-dom';
 import { userout } from "../user/userSlice";
+import { addSpa } from '../../containers/SPA/spaSlice';
 import { chartData } from "../../containers/services/chartSlice";
 import Register from '../user/register/register';
 import Login from '../user/login/login';
@@ -35,17 +36,46 @@ function OffcanvasExample() {
 
 
   });
-
-  let userMailHeader = localStorage.getItem('SAVEUSERMAIL');
   let jwt = localStorage.getItem('SAVEJWT');
-  let decoded = jwt_decode(jwt)
-  console.log(decoded.roleIdRole)
+  // let decoded = jwt_decode(jwt) || null
+  // let userMailHeader = decoded.mail || null 
 
   const chartAdded = useSelector(chartData);
-  console.log(chartAdded)
-  console.log(chartAdded.lenght)
-  console.log(chartAdded.details)
-  console.log(chartAdded.details.length)
+  // console.log(chartAdded)
+  // console.log(chartAdded.lenght)
+  // console.log(chartAdded.details)
+  // console.log(chartAdded.details.length)
+
+  const servicesPage = () => {
+    console.log("vamos a por services!")
+    dispatch(addSpa({
+      details: "services"
+    }))
+    // navigate("/")
+  }
+  const pilsPage = () => {
+    console.log("vamos a por pils!")
+    dispatch(addSpa({
+      details: "pils"
+    }))
+    // navigate("/")
+  }
+
+  const myAccountPage = () => {
+    console.log("vamos a por my account!")
+    dispatch(addSpa({
+      details: "myaccount"
+    }))
+    // navigate("/")
+  }
+
+  const homePage = () => {
+    console.log("vamos a por Home!")
+    dispatch(addSpa({
+      details: "home"
+    }))
+    // navigate("/")
+  }
 
   const logOut = () => {
     localStorage.removeItem("SAVEJWT")
@@ -59,15 +89,16 @@ function OffcanvasExample() {
     setLogged(false)
   }
 
+  // console.log(userMailHeader) 
 
-  if (userMailHeader !== null) {
+  if (jwt !== null) {
     return (
       <>
         {
           ['lg'].map((expand) => (
             <Navbar key={expand} bg="#a18cd1" expand={expand} className=" navbarDesign sticky-top" variant="variant">
               <Container fluid>
-                <Navbar.Brand className='logoDesign' href="/">BusinessToMe</Navbar.Brand>
+                <Navbar.Brand className='logoDesign' onClick={()=>homePage()}>BusinessToMe</Navbar.Brand>
                 <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                 <Navbar.Offcanvas className="variant" bg="#fda085"
                   id={`offcanvasNavbar-expand-${expand}`}
@@ -75,16 +106,15 @@ function OffcanvasExample() {
                   placement="end"
                 >
                   <Offcanvas.Header closeButton>
-                    <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                    <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} onClick={()=>homePage()}>
                       BusinessToMe
                     </Offcanvas.Title>
                   </Offcanvas.Header>
                   <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-2 pe-5">
-                      <Nav.Link onClick={navigate("/")}>Home</Nav.Link>
-                      <Nav.Link onClick={navigate("/")}>Servicios</Nav.Link>
-                      <Nav.Link onClick={navigate("/blog")}>Blog</Nav.Link>
-                      <Nav.Link onClick={navigate("/")}>Conócenos</Nav.Link>
+                      <Nav.Link onClick={()=>homePage()}>Home</Nav.Link>
+                      <Nav.Link onClick={()=>servicesPage()}>Servicios</Nav.Link>
+                      <Nav.Link onClick={()=>pilsPage()}>Blog</Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
                       <Cart
@@ -95,11 +125,11 @@ function OffcanvasExample() {
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
 
-                        <NavDropdown.Item>
+                        {/* <NavDropdown.Item onClick={()=>myAccountPage()}>
                           {decoded.mail}
-                        </NavDropdown.Item>
-                        <NavDropdown.Item onClick={navigate("/myaccount")}>
-                          Perfil
+                        </NavDropdown.Item> */}
+                        <NavDropdown.Item onClick={()=>myAccountPage()}>
+                         Mi perfil
                         </NavDropdown.Item>
                         <NavDropdown.Item onClick={logOut}>
                           Cerrar sesión
@@ -129,7 +159,7 @@ function OffcanvasExample() {
           ['lg'].map((expand) => (
             <Navbar key={expand} bg="#a18cd1" expand={expand} className=" navbarDesign sticky-top" variant="variant">
               <Container fluid>
-                <Navbar.Brand className='logoDesign' href="/">BusinessToMe</Navbar.Brand>
+                <Navbar.Brand className='logoDesign'>BusinessToMe</Navbar.Brand>
                 <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                 <Navbar.Offcanvas className="variant" bg="#fda085"
                   id={`offcanvasNavbar-expand-${expand}`}
@@ -143,10 +173,9 @@ function OffcanvasExample() {
                   </Offcanvas.Header>
                   <Offcanvas.Body className="justify-content-end flex-grow-2">
                     <Nav className="justify-content-end flex-grow-2 pe-5">
-                      <Nav.Link onClick={navigate("/")}>Home</Nav.Link>
-                      <Nav.Link onClick={navigate("/")}>Servicios</Nav.Link>
-                      <Nav.Link onClick={navigate("/blog")}>Blog</Nav.Link>
-                      <Nav.Link onClick={navigate("/")}>Conócenos</Nav.Link>
+                      <Nav.Link onClick={()=>servicesPage()}>Home</Nav.Link>
+                      <Nav.Link onClick={()=>servicesPage()}>Servicios</Nav.Link>
+                      <Nav.Link onClick={()=>pilsPage()}>Blog</Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><div className='chart'>{chartAdded.details.length}</div></Nav.Link>
                       <Cart
@@ -154,7 +183,7 @@ function OffcanvasExample() {
                         onHide={() => setShowCart(false)}
                       />
                       <NavDropdown className='variant'
-                        title="Mi cuenta" bg="#C8dac7"
+                        title="Login" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
                         <Button variant="primary" onClick={() => setShow(true)}>
                           Login

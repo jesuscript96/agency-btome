@@ -5,6 +5,7 @@ import { bringServices, bringFilteredServices } from '../../services/apicalls'
 import { errorCheck } from '../../services/useful';
 import { useState } from "react";
 import { useEffect } from "react";
+import { addSpa } from "../SPA/spaSlice";
 
 import { useDispatch } from "react-redux";
 import { addService, } from "./serviceSlice"
@@ -29,7 +30,7 @@ const Services = () => {
         priceError: ""
     })
 
-    
+   
 
     const inputHandler = (e) => {
 
@@ -62,9 +63,10 @@ const Services = () => {
 
         dispatch(addService({ ...service, details: service }));
 
-        setTimeout(() => {
-            navigate("/serviceDetail");
-        }, 750);
+        console.log("vamos a por serviceDetail!")
+        dispatch(addSpa({
+          details: "serviceDetail"
+        }))
     }
 
     const clickedServiceGoal = (e) => {
@@ -87,7 +89,7 @@ const Services = () => {
     useEffect(() => {
         //This function is triggered when the component is mounted for the first time.
 
-        console.log(services)
+        // console.log(services)
 
         if (services.length === 0) {
 
@@ -122,7 +124,7 @@ const Services = () => {
             //Voy a aplicar mi proceso de debounce....
             if (services.length === 0) {
 
-            console.log(criteria.goal, criteria.price)
+            // console.log(criteria.goal, criteria.price)
 
             const bring = setTimeout(() => {
 
@@ -140,7 +142,7 @@ const Services = () => {
         }
 
         } else if (criteria.goal === '') {
-            console.log(services)
+            // console.log(services)
             if (services.length === 0) {
             bringServices().then(
                 (res) => {
@@ -154,7 +156,7 @@ const Services = () => {
     }, [criteria])
 
 
-    console.log(services)
+    // console.log(services)
 
     if (services.length === 0) {
         return (

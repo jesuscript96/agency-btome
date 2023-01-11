@@ -3,6 +3,7 @@ import "./pils.scss";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import { addSpa } from "../SPA/spaSlice";
 
 import { useDispatch } from "react-redux";
 import  { Col, Container, Image, Row, Spinner } from "react-bootstrap";
@@ -35,9 +36,10 @@ const Pils = () => {
 
         dispatch(addPil({ ...pil, details: pil }));
 
-        setTimeout(() => {
-            navigate("/pilsdetail");
-        }, 750);
+        console.log("vamos a por pilDetail!")
+        dispatch(addSpa({
+          details: "pilDetail"
+        }))
     }
 
     const pilsFilteredByName = (criteria) => {
@@ -201,7 +203,6 @@ const Pils = () => {
                             </Card.Text>
                             <Card.Text>
                                     title: {pil.title} <br></br>
-                                    desc: {pil.text} €
                             </Card.Text>
                             <Button className="buttonSearch" variant="warning" size="lg" active 
                              onClick={() => clickedPil(pil)} 

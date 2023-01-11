@@ -199,3 +199,11 @@ export const bringAllOrders = async (jwt) => {
   }
 })
 };
+
+export const newReview = async (review, jwt) => {
+  return await axios.post("http://localhost:3000/reviews/newreview", review, {
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      }
+    })
+};

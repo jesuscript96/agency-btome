@@ -16,12 +16,20 @@ export const chartSlice = createSlice(
           name: [...state.name, action.payload],
           price: [...state.price, action.payload]
         }
-      }
+      },
+      emptyChart: (state, action) => {
+        return {
+          ...state,
+          details: [],
+          name: [],
+          price: []
+        }
+      },
     }
   }
 );
 
-export const { addServiceToChart } = chartSlice.actions;
+export const { addServiceToChart, emptyChart } = chartSlice.actions;
 
 export const chartData = (state) => state.chart;
 
