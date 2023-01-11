@@ -30,7 +30,7 @@ const Services = () => {
         priceError: ""
     })
 
-   
+
 
     const inputHandler = (e) => {
 
@@ -65,7 +65,7 @@ const Services = () => {
 
         console.log("vamos a por serviceDetail!")
         dispatch(addSpa({
-          details: "serviceDetail"
+            details: "serviceDetail"
         }))
     }
 
@@ -124,32 +124,32 @@ const Services = () => {
             //Voy a aplicar mi proceso de debounce....
             if (services.length === 0) {
 
-            // console.log(criteria.goal, criteria.price)
+                // console.log(criteria.goal, criteria.price)
 
-            const bring = setTimeout(() => {
+                const bring = setTimeout(() => {
 
-                bringFilteredServices(criteria.goal, criteria.price)
-                    .then(res => {
+                    bringFilteredServices(criteria.goal, criteria.price)
+                        .then(res => {
 
-                        setServices(res.data)
+                            setServices(res.data)
 
-                    })
-                    .catch(error => console.log(error));
+                        })
+                        .catch(error => console.log(error));
 
-            }, 150);
+                }, 150);
 
-            return () => clearTimeout(bring);
-        }
+                return () => clearTimeout(bring);
+            }
 
         } else if (criteria.goal === '') {
             // console.log(services)
             if (services.length === 0) {
-            bringServices().then(
-                (res) => {
-                    setServices(res.data)
+                bringServices().then(
+                    (res) => {
+                        setServices(res.data)
 
-                }
-            );
+                    }
+                );
             }
         }
 
@@ -163,27 +163,31 @@ const Services = () => {
             <Container fluid className="servicesDesign" >
                 <Row className="preServices h-50">
                     <Col className="preServices">
-                        <div>
+                        <div className="preServices">
                             <h1>Nuestros Servicios</h1>
                             <h3>Sea cual sea su objetivo, tenemos servicios a la altura. Somos expertos en Growth Marketing. ¿Cómo podemos llevarte al éxito?</h3>
 
                         </div>
                     </Col>
-                    <Col className="preServices">
-                        <Container>
-                            <Row>
+                </Row>
+                <Row className="filter h-50">
+                    <Col>
+                        <Container fluid>
+                            <Row className="filter">
                                 <Col>
                                     <h3>Propósito:</h3>
+                                    <div>
+                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button>
+                                    </div>
                                 </Col>
-                                <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
-                                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
-                                <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
+                                {/* <Col>
+                                 </Col> */}
                             </Row>
-                            <Row>
+                            <Row className="filter">
                                 <Col>
                                     <h3>Presupuesto:</h3>
-                                </Col>
-                                <Col>
                                     <div className="inputsContainer">
                                         <div className="errorInput">{priceError.priceError}
                                         </div>
@@ -198,12 +202,12 @@ const Services = () => {
 
                 </Row>
 
-                <Row   >
+                <Row className="filter">
 
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button></Col>
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
-                    <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
-                    <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
+                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button>
+                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
 
                 </Row>
 
@@ -216,30 +220,34 @@ const Services = () => {
         )
     } else {
         return (
-            <Container fluid className="servicesDesign" >
+            <Container fluid className="servicesDesign " >
                 <Row className="preServices h-50">
                     <Col className="preServices">
-                        <div>
+                        <div className="preServices">
                             <h1>Nuestros Servicios</h1>
                             <h3>Sea cual sea su objetivo, tenemos servicios a la altura. Somos expertos en Growth Marketing. ¿Cómo podemos llevarte al éxito?</h3>
 
                         </div>
                     </Col>
-                    <Col className="preServices">
-                        <Container>
-                            <Row>
+                </Row>
+                <Row className="filter h-50">
+                    <Col>
+                        <Container fluid>
+                            <Row className="filter">
                                 <Col>
                                     <h3>Propósito:</h3>
+                                    <div>
+                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button>
+                                    </div>
                                 </Col>
-                                <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
-                                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
-                                <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
+                                {/* <Col>
+                                 </Col> */}
                             </Row>
-                            <Row>
+                            <Row className="filter">
                                 <Col>
                                     <h3>Presupuesto:</h3>
-                                </Col>
-                                <Col>
                                     <div className="inputsContainer">
                                         <div className="errorInput">{priceError.priceError}
                                         </div>
@@ -254,12 +262,12 @@ const Services = () => {
 
                 </Row>
 
-                <Row   >
+                <Row className="filter">
 
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button></Col>
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button></Col>
-                    <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button></Col>
-                    <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
+                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button>
+                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
 
                 </Row>
 
@@ -268,25 +276,50 @@ const Services = () => {
                     {/* Here I proceed to MAP the hook which contains all the Services */}
 
                     {
-                services.map(service => {
-                    return (
-                        <Card onClick={() => clickedService(service)} style={{ width: '12rem' }} className="cards" key={service.id_service}>
-                        <Card.Img className='imgCards' variant="top" src={`https://robohash.org/YOUR-TE${service.type}dsXT.png`} />
-                        <Card.Body>
-                            {/* <Card.Title>{service.film.title}</Card.Title> */}
-                            <Card.Text>
-                                {service.type}
-                            </Card.Text>
-                            <Card.Text>
-                                    Nombre: {service.name} <br></br>
-                                    Precio: {service.price} €
-                            </Card.Text>
-                            <Button className="buttonSearch" variant="warning" size="lg" active  onClick={() => clickedService(service)} name="web">+Info</Button>
-                        </Card.Body>
-                    </Card>
-                    )
-                })
-            }
+                        services.map(service => {
+
+                            if (service.id_service % 2 === 0) {
+                                return (
+
+                                    <Container>
+                                        <Row className="servicesRow">
+                                            <Col className="serviceMoreInfo">
+                                                <div>
+                                                    <h1>{service.name}</h1>
+                                                </div>
+                                                <div>
+                                                    <Button variant="success" onClick={() => clickedService(service)}>
+                                                        +Info
+                                                    </Button>
+                                                </div>
+                                            </Col>
+                                            <Col>
+                                            <img src={service.img} className="imgServices"/>
+                                            </Col>
+                                        </Row>
+                                    </Container>)
+                            } else {
+                                return (
+                                    <Container>
+                                        <Row className="servicesRow">
+                                            <Col>
+                                            <img src={service.img} className="imgServices"/>
+                                            </Col>
+                                            <Col className="serviceMoreInfo">
+                                                <div>
+                                                    <h1>{service.name}</h1>
+                                                </div>
+                                                <div>
+                                                    <Button variant="danger" onClick={() => clickedService(service)}>
+                                                        +Info
+                                                    </Button>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </Container>)
+                            }
+                        })
+                    }
 
 
 

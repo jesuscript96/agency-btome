@@ -146,10 +146,10 @@ const Pils = () => {
   <br></br>
                 <Row   >
 
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
-                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
-                 <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
-                 <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
+                    <Col><Button className="buttonSearchPils" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
+                <Col>  <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
+                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
+                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
 
                 </Row>
               
@@ -178,40 +178,45 @@ const Pils = () => {
 <br></br>
                 <Row   >
 
-                <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
-                <Col>  <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
-                 <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
-                 <Col> <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
+                <Col><Button className="buttonSearchPils" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
+                <Col>  <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
+                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
+                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
 
                 </Row>
 
-                <Row flex >
+                <Row flex className="cardsPils pad" >
 
                     {/* Here I proceed to MAP the hook which contains all the Pils */}
 
+                
                     {
                 pils.map(pil => {
                     return (
+                        <Col md={3} sm={4} className="cardsPils">
+
                         <Card 
                         onClick={() => clickedPil(pil)} 
-                        style={{ width: '12rem' }} className="cards" key={pil.id_pil}>
-                        <Card.Img className='imgCards' variant="top" src={`https://robohash.org/YOUR-TE${pil.type}dsXT.png`} />
+                        style={{ width: '12rem' }} className="cardsPils" key={pil.id_pil}>
+                        {/* <Card.Img className='imgCards' variant="top" src={`https://robohash.org/YOUR-TE${pil.type}dsXT.png`} /> */}
                         <Card.Body>
                             {/* <Card.Title>{pil.film.title}</Card.Title> */}
-                            <Card.Text>
+                            {/* <Card.Text>
                                 {pil.type}
-                            </Card.Text>
+                            </Card.Text> */}
                             <Card.Text>
-                                    title: {pil.title} <br></br>
+                                    {pil.title} <br></br>
                             </Card.Text>
-                            <Button className="buttonSearch" variant="warning" size="lg" active 
+                            <Button className="buttonSearchPils" variant="warning" size="lg" active 
                              onClick={() => clickedPil(pil)} 
                              name="web">Leer más</Button>
                         </Card.Body>
                     </Card>
+                        </Col>
                     )
                 })
             }
+                
 
 
 

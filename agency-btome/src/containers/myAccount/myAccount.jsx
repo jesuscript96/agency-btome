@@ -12,7 +12,8 @@ const MyAccount = () => {
 
       return <div className="myAccountDesign">
         <Container>
-            <Row><h2>Usuario</h2></Row>
+            <Row><h1>Mi Usuario</h1></Row>
+            <br />
             <Row> <Profile /></Row>
             <Row>
                 <TabsProfileInfo />

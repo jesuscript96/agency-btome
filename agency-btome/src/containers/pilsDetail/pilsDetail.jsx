@@ -24,24 +24,28 @@ const PilsDetail = () => {
   }
 
   const selectedPil = useSelector(pilData);
+  console.log(selectedPil)
 
   if (selectedPil?.id_pil !== undefined) {
 
     return (
 
       <Container fluid className="filmsViewDesign">
+        <Row>
+        <div className="titleDesign text-fluid">{selectedPil?.title}</div>
+        </Row>
         <Row className="align-items-center">
           <Col >
             <div><Image className="moviePicView fluid" src={`https://robohash.org/YOUR-TE${selectedPil.type}dsXT.png`} /></div>
-            <Button className="buttonDesign"
+            <div className="ratingDesign align-items-center">date: {selectedPil?.creation_date}</div>
+          </Col>
+          </Row>
+          <Row className=" align-items-center justify-content-center">
+          <Col md={9} className=" align-items-center">
+            <div className="reviewDesign text-break "> {selectedPil?.text}</div>
+          <Button className="buttonDesign"
               onClick={() => blogPage()}
             >Volver al blog</Button>
-          </Col>
-          <Col className=" align-items-center">
-            <div className="titleDesign text-fluid">{selectedPil?.title}</div>
-            <div className="genreDesign">Género: {selectedPil?.type}</div>
-            <div className="ratingDesign align-items-center">date: {selectedPil?.creation_date}</div>
-            <div className="sinopsisDesign text-break "> {selectedPil?.text}</div>
           </Col>
 
 
