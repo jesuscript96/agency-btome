@@ -1,42 +1,42 @@
 
 import axios from 'axios';
 
-// export const loginUser = async (body, res) => {
+export const loginUser = async (body, res) => {
 
-//     try {
-//         let resp = await axios.post(
-//             "https://proyecto04-videoclub-production-4de8.up.railway.app/auth/login",
-//             body
-//         );
+    try {
+        let resp = await axios.post(
+            "http://localhost:3000/auth/login",
+            body
+        );
         
     
-//         if (resp.data === "Password or email is incorrect") {
-//             return "El email o la contraseña son incorrectos"
+        if (resp.data === "Password or email is incorrect") {
+            return "El email o la contraseña son incorrectos"
     
-//         } else if (resp.data.message === "Login successful") {
-//             return resp
-//         }
-//     } catch (error) {
+        } else if (resp.data.message === "Login successful") {
+            return resp
+        }
+    } catch (error) {
        
-//         return error.response
-//     }
+        return error.response
+    }
 
     
-// };
+};
 
-// export const registerUser = async (body) => {
+export const registerUser = async (body) => {
 
     
 
-//     return axios.post(
-//         "https://proyecto04-videoclub-production-4de8.up.railway.app/auth/register",
-//         body
-//         // {
-//         //     "mail": 'elbanking@punsdhi.com',
-//         //     "password": 'gsdfg34563SFGSF'
-//         //   }
-//     );
-// };
+    return axios.post(
+        "http://localhost:3000/auth/register",
+        body
+        // {
+        //     "mail": 'elbanking@punsdhi.com',
+        //     "password": 'gsdfg34563SFGSF'
+        //   }
+    );
+};
 
 export const bringServices = () => {
 
@@ -113,64 +113,97 @@ export const bringServiceReviews = async (type) => {
 
 
 
-// export const bringUserInfo = (email) => {
+export const bringUserInfo = async (jwt) => {
+    console.log("entro a traer al user")
+    console.log(jwt)
+    return await axios.get("http://localhost:3000/users/profile", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+// .catch(function (error) {
+//   if (error.response) {
+//     // Request made and server responded
+//     console.log(error.response.data);
+//     console.log(error.response.status);
+//     console.log(error.response.headers);
+//   } else if (error.request) {
+//     // The request was made but no response was received
+//     console.log(error.request);
+//   } else {
+//     // Something happened in setting up the request that triggered an Error
+//     console.log('Error', error.message);
+//   }
 
-//     return axios.get("https://proyecto04-videoclub-production-4de8.up.railway.app/users/id/" + email)
+// });
+};
 
-// };
+export const newOrder = async (order, jwt) => {
+    return await axios.post("http://localhost:3000/orders/neworder", order, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      })
+};
 
-// export const bringUserOrders = (email) => {
+export const addServiceToOrder = async (order, jwt) => {
+    return await axios.post("http://localhost:3000/orders/addservice", order, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      })
+};
 
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/${email}`)
+export const bringUserOrders = async (jwt) => {
 
-// };
+    return await axios.get("http://localhost:3000/users/orders", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
 
-// export const bringUserActiveOrders = (email) => {
+export const bringUserReviews = async (jwt) => {
 
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/active/${email}`)
+    return await axios.get("http://localhost:3000/users/reviews", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
 
-// };
+export const bringAllUsers = async (jwt) => {
 
-// export const bringAllOrders = () => {
+    return await axios.get("http://localhost:3000/users/", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
 
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/`)
+export const deleteUser = async (email, jwt) => {
 
-// };
+    return await axios.delete("http://localhost:3000/users/delete/" + email, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      })
 
-// export const bringActiveAllOrders = () => {
+};
 
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/active/orders/all`)
+export const bringAllOrders = async (jwt) => {
 
-// };
+    return await axios.get("http://localhost:3000/orders/", {
+  headers: {
+    'Authorization': `Bearer ${jwt}`
+  }
+})
+};
 
-// export const bringAllUsers = () => {
-
-//     return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/users/`)
-
-// };
-
-// export const deleteUser = (email) => {
-
-//     return axios.delete("https://proyecto04-videoclub-production-4de8.up.railway.app/users/delete/" + email)
-
-// };
-
-// export const orderFilm = async (movie) => {
-//     const jwt = localStorage.getItem("SAVEJWT")
-//     let config = {
-//         headers: {
-//             Authorization: `Bearer ${jwt}`,
-//             'Access-Control-Allow-Origin': '*',
-//             'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
-//             'Access-Control-Allow-Methods': '*',
-//             "Content-Type": "application/json"
-//         }
-
-//     }
-//     return await axios.post(`https://proyecto04-videoclub-production-4de8.up.railway.app/orders/neworder`,movie,config)
-// };
-
-// export const bringOneFilm = (film) => {
-//         return axios.get(`https://proyecto04-videoclub-production-4de8.up.railway.app/films/title/${film}`)
-   
-//     }
+export const newReview = async (review, jwt) => {
+  return await axios.post("http://localhost:3000/reviews/newreview", review, {
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      }
+    })
+};

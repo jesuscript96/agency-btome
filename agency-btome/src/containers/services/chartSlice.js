@@ -4,20 +4,32 @@ export const chartSlice = createSlice(
   {
     name: 'chart',
     initialState: {
-      details: []
+      details: [],
+      name: [],
+      price: []
     },
     reducers: {
       addServiceToChart: (state, action) => {
         return {
           ...state,
-          details: [...state.details, action.payload]
+          details: [...state.details, action.payload],
+          name: [...state.name, action.payload],
+          price: [...state.price, action.payload]
         }
-      }
+      },
+      emptyChart: (state, action) => {
+        return {
+          ...state,
+          details: [],
+          name: [],
+          price: []
+        }
+      },
     }
   }
 );
 
-export const { addServiceToChart } = chartSlice.actions;
+export const { addServiceToChart, emptyChart } = chartSlice.actions;
 
 export const chartData = (state) => state.chart;
 
