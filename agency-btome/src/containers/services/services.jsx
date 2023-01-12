@@ -301,7 +301,7 @@ const Services = () => {
                             } else {
                                 return (
                                     <Container>
-                                        <Row className="servicesRow">
+                                        <Row className="servicesRow par">
                                             <Col>
                                             <img src={service.img} className="imgServices"/>
                                             </Col>

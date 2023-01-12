@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./allOrders.scss"
+import Table from 'react-bootstrap/Table';
 
 import { bringAllOrders } from '../../../services/apicalls';
 
@@ -9,7 +10,7 @@ const AllOrders = () => {
 
     const [allOrders, setAllOrders] = useState([]);
     const [error, setError] = useState('');
-    
+
     const userJWT = JSON.parse(localStorage.getItem("SAVEJWT"))
 
     useEffect(() => {
@@ -18,56 +19,62 @@ const AllOrders = () => {
         if (allOrders.length === 0) {
 
             bringAllOrders(userJWT)
-            .then(
-                (res) => {
-                   
-                    setAllOrders(res.data)
-                }
-            )
-            .catch((error) => {
-                
-                setError(error.response?.data  || 'ups intentalo de nuevo' )
-            })
+                .then(
+                    (res) => {
+
+                        setAllOrders(res.data)
+                    }
+                )
+                .catch((error) => {
+
+                    setError(error.response?.data || 'ups intentalo de nuevo')
+                })
 
         };
 
 
     }, [allOrders]);
 
+    console.log(allOrders)
+    console.log(allOrders[0])
     
 
-    if(error) {
+    if (error) {
         return <pre>{error.repeat(1)} </pre>
     }
     if (allOrders.length !== 0) {
         return (
-        // <pre>{JSON.stringify(allOrders, null, 2)}</pre>
+            // <pre>{JSON.stringify(allOrders, null, 2)}</pre>
             <div className='contentStyle'>
                 <div className='contentStyle'></div>
                 <br></br>
-            {
-                allOrders.map(allOrder => {
-                    return (
-                        <Card style={{ width: '12rem' }} className="cards" key={allOrder.id_order}>
-                        <Card.Img className='imgCards' variant="top" src={"https://www.themoviedb.org/t/p/w600_and_h900_bestv2/b0MxU37dNmMwKtoPVYPKOZSIrIn.jpg"} />
-                        <Card.Body>
-                            {/* <Card.Title>{allOrder.film.title}</Card.Title> */}
-                            <Card.Text>
-                                {allOrder.userMail}
-                            </Card.Text>
-                            <Card.Text>
-                                {allOrder.name}
-                            </Card.Text>
-                            <Card.Text>
-                                    Desde {allOrder.order_date} <br></br>
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    )
-                })
-            }
-        </div>
-        
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Client</th>
+                                        <th>Service</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                {
+                    allOrders[0].map(allOrder => {
+                        console.log(allOrder)
+                        return (
+                                <tbody>
+                                    <tr>
+                                        <td>{allOrder.order_date}</td>
+                                        <td>{allOrder.userMail}</td>
+                                        <td>{allOrder.name}</td>
+                                        <td>{allOrder.price}</td>
+                                    </tr>
+                                </tbody>
+                                    )
+                                })
+                            }
+                            </Table>
+            </div>
+
         )
     } else {
         return <pre>Todavía no hay pedidos en la plataforma</pre>

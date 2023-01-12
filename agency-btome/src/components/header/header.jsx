@@ -86,6 +86,9 @@ function OffcanvasExample() {
         role: ""
       }
     }))
+    dispatch(addSpa({
+      details: "home"
+    }))
     setLogged(false)
   }
 

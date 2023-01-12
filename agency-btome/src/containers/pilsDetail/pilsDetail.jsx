@@ -25,6 +25,7 @@ const PilsDetail = () => {
 
   const selectedPil = useSelector(pilData);
   console.log(selectedPil)
+  console.log(selectedPil.img)
 
   if (selectedPil?.id_pil !== undefined) {
 
@@ -36,8 +37,8 @@ const PilsDetail = () => {
         </Row>
         <Row className="align-items-center">
           <Col >
-            <div><Image className="moviePicView fluid" src={`https://robohash.org/YOUR-TE${selectedPil.type}dsXT.png`} /></div>
-            <div className="ratingDesign align-items-center">date: {selectedPil?.creation_date}</div>
+            <div><Image className="pilPicView fluid" src={selectedPil.img} /></div>
+            <div className="ratingDesign">date: {selectedPil?.creation_date}</div>
           </Col>
           </Row>
           <Row className=" align-items-center justify-content-center">
