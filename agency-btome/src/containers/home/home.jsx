@@ -34,7 +34,7 @@ function Home() {
                         <p>BToMe, tu agencia líder en performanze digital</p>
                     </div>
                     <div>
-                        <Button variant="primary" onClick={() => servicesPage()}>
+                        <Button className="buttonSearchHome" onClick={() => servicesPage()}>
                             Ver servicios
                         </Button>
                     </div>
@@ -58,7 +58,7 @@ function Home() {
                 </Col>
                 <Col>
                     <div>
-                        <Button variant="primary" onClick={() => servicesPage()}>
+                        <Button className="buttonSearchHome" onClick={() => servicesPage()}>
                             Ver servicios
                         </Button>
                     </div>
@@ -67,7 +67,7 @@ function Home() {
             <Row className="homeRow">
                 <Col>
                     <div>
-                        <Button variant="primary" onClick={() => pilsPage()}>
+                        <Button className="buttonSearchHome" onClick={() => pilsPage()}>
                             Ir al blog
                         </Button>
                     </div>

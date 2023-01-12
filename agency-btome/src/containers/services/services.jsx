@@ -36,7 +36,8 @@ const Services = () => {
 
         setCriteria((prevState) => ({
             ...prevState,
-            price: e.target.value
+            price: e.target.value,
+            goal: prevState.goal
 
         }));
     }
@@ -72,9 +73,11 @@ const Services = () => {
     const clickedServiceGoal = (e) => {
         setCriteria((prevState) => ({
             ...prevState,
-            goal: e.target.name
+            goal: e.target.name,
+            price: prevState.price
 
         }))
+        console.log(criteria)
     }
 
     const allServices = () => {
@@ -117,12 +120,12 @@ const Services = () => {
 
     useEffect(() => {
 
+        console.log(criteria.goal)
 
-
-        if (criteria.goal !== '') {
+        if (criteria.goal !== '' || criteria.goal !== null) {
 
             //Voy a aplicar mi proceso de debounce....
-            if (services.length === 0) {
+            // if (services.length === 0) {
 
                 // console.log(criteria.goal, criteria.price)
 
@@ -130,7 +133,8 @@ const Services = () => {
 
                     bringFilteredServices(criteria.goal, criteria.price)
                         .then(res => {
-
+                            // console.log(res)
+                            // console.log(res.data)
                             setServices(res.data)
 
                         })
@@ -139,7 +143,7 @@ const Services = () => {
                 }, 150);
 
                 return () => clearTimeout(bring);
-            }
+            // }
 
         } else if (criteria.goal === '') {
             // console.log(services)
@@ -177,9 +181,9 @@ const Services = () => {
                                 <Col>
                                     <h3>Propósito:</h3>
                                     <div>
-                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
-                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
-                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button>
+                                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button>
                                     </div>
                                 </Col>
                                 {/* <Col>
@@ -204,10 +208,10 @@ const Services = () => {
 
                 <Row className="filter">
 
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button>
-                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
-                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
-                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
+                    <Col><Button className="buttonSearch" size="lg" active onClick={allServices}>Todos</Button>
+                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
 
                 </Row>
 
@@ -237,9 +241,9 @@ const Services = () => {
                                 <Col>
                                     <h3>Propósito:</h3>
                                     <div>
-                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
-                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
-                                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button>
+                                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button>
                                     </div>
                                 </Col>
                                 {/* <Col>
@@ -264,10 +268,10 @@ const Services = () => {
 
                 <Row className="filter">
 
-                    <Col><Button className="buttonSearch" variant="warning" size="lg" active onClick={allServices}>Todos</Button>
-                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
-                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
-                        <Button className="buttonSearch" variant="warning" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
+                    <Col><Button className="buttonSearch" size="lg" active onClick={allServices}>Todos</Button>
+                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
+                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
+                        <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
 
                 </Row>
 
@@ -288,7 +292,7 @@ const Services = () => {
                                                     <h1>{service.name}</h1>
                                                 </div>
                                                 <div>
-                                                    <Button variant="success" onClick={() => clickedService(service)}>
+                                                    <Button className="buttonSearch" onClick={() => clickedService(service)}>
                                                         +Info
                                                     </Button>
                                                 </div>
@@ -310,7 +314,7 @@ const Services = () => {
                                                     <h1>{service.name}</h1>
                                                 </div>
                                                 <div>
-                                                    <Button variant="danger" onClick={() => clickedService(service)}>
+                                                    <Button className="buttonSearch" onClick={() => clickedService(service)}>
                                                         +Info
                                                     </Button>
                                                 </div>

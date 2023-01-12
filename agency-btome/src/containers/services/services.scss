@@ -69,8 +69,11 @@ transition: 0.7s;
 
 .buttonSearch {
     width: auto;
-    background-color:white ;
-    border-radius: 2em;
+    margin: 0.5em;
+    background-color: transparent !important;
+    border-color: black !important;
+    border-width: 0.1em !important;    
+    color: black !important;
     text-size-adjust: auto;
 }
 
