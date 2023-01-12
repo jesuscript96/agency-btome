@@ -14,6 +14,7 @@ import { newOrder, addServiceToOrder } from "../../services/apicalls"
 function Cart(props) {
 
     const chartAdded = useSelector(chartData);
+    
 
     useEffect(() => {
     });
@@ -23,6 +24,7 @@ function Cart(props) {
     const [success, setSuccess] = useState({
         orderSuccess: ""
     })
+    const [bougth, setBougth] = useState("");
 
     const orderServices = () => {
         createNewOrder()
@@ -45,6 +47,7 @@ function Cart(props) {
 
                     })))
                     dispatch(emptyChart())
+                    setBougth("Done")
                 })
 
             })
@@ -69,10 +72,11 @@ function Cart(props) {
     }
 
 
-    // console.log(chartAdded.details)
+    console.log(chartAdded.details.bought)
+    console.log(bougth)
+    console.log(success.orderSuccess)
 
-
-    if (success.orderSuccess === "") {
+    if (bougth === "" && chartAdded.details.length === 0) {
         return (
             <Modal
                 {...props}
@@ -86,62 +90,86 @@ function Cart(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className='loginDesign'>
-                        <ListGroup as="ol" numbered>
-    
-                            {
-                                chartAdded.details.map(service => {
-                                    return (
-                                        <ListGroup.Item
-                                            as="li"
-                                            className="d-flex justify-content-between align-items-start"
-                                        >
-                                            <div className="ms-2 me-auto">
-                                                <div className="fw-bold">{service.name}</div>
-                                            </div>
-                                            <Badge bg="" className="cartPrices" pill> <p>{service.price}€</p>
-                                                
-                                            </Badge>
-                                        </ListGroup.Item>
-                                    )
-                                })
-                            }
-                        </ListGroup>
-                        <div>
-                            <Button
-                                 onClick={() => orderServices()} 
-                                className="buttonDesignCart">Tramitar pedido</Button>
-                        </div>
-    
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button className="buttonDesignCart" onClick={props.onHide}>Close</Button>
-                </Modal.Footer>
-            </Modal>
-        );
-    } else {
-        return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Carrito
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <div className="errorInput">{success.orderSuccess}</div>
+                <div className="errorInput">Añade algún servicio a tu carrito :)</div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
         );    
+    } else {
+        if (chartAdded.details.length !== 0) {
+            return (
+                <Modal
+                    {...props}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Carrito
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className='loginDesign'>
+                            <ListGroup as="ol" numbered>
+        
+                                {
+                                    chartAdded.details.map(service => {
+                                        return (
+                                            <ListGroup.Item
+                                                as="li"
+                                                className="d-flex justify-content-between align-items-start"
+                                            >
+                                                <div className="ms-2 me-auto">
+                                                    <div className="fw-bold">{service.name}</div>
+                                                </div>
+                                                <Badge bg="" className="cartPrices" pill> <p>{service.price}€</p>
+                                                    
+                                                </Badge>
+                                            </ListGroup.Item>
+                                        )
+                                    })
+                                }
+                            </ListGroup>
+                            <div>
+                                <Button
+                                     onClick={() => orderServices()} 
+                                    className="buttonDesignCart">Tramitar pedido</Button>
+                            </div>
+        
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button className="buttonDesignCart" onClick={props.onHide}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
+            );
+        } else {
+            return (
+                <Modal
+                    {...props}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Carrito
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                    <div className="errorInput">{success.orderSuccess}</div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={props.onHide}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
+            );    
+        }
     }
+
 
 }
 

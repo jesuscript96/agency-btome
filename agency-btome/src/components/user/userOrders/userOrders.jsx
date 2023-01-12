@@ -43,7 +43,7 @@ const UserOrders = () => {
         };
 
 
-    }, [userOrders]);
+    }, []);
 
     const clickedService = (service) => {
 

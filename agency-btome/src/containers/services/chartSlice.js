@@ -6,7 +6,8 @@ export const chartSlice = createSlice(
     initialState: {
       details: [],
       name: [],
-      price: []
+      price: [],
+      bought: ""
     },
     reducers: {
       addServiceToChart: (state, action) => {

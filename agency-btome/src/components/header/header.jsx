@@ -19,6 +19,7 @@ import Register from '../user/register/register';
 import Login from '../user/login/login';
 import Button from 'react-bootstrap/Button';
 import Cart from '../cart/cart';
+import { userData } from '../user/userSlice';
 
 
 function OffcanvasExample() {
@@ -33,28 +34,22 @@ function OffcanvasExample() {
   const [logged, setLogged] = useState(true);
 
   useEffect(() => {
-
-
   });
-  let jwt = localStorage.getItem('SAVEJWT');
-  // let decoded = jwt_decode(jwt) || null
-  // let userMailHeader = decoded.mail || null 
 
+  let jwt = localStorage.getItem('SAVEJWT');
   const chartAdded = useSelector(chartData);
-  // console.log(chartAdded)
-  // console.log(chartAdded.lenght)
-  // console.log(chartAdded.details)
-  // console.log(chartAdded.details.length)
+  const userLoged = useSelector(userData)
+  // console.log(userLoged)
 
   const servicesPage = () => {
-    console.log("vamos a por services!")
+    // console.log("vamos a por services!")
     dispatch(addSpa({
       details: "services"
     }))
     // navigate("/")
   }
   const pilsPage = () => {
-    console.log("vamos a por pils!")
+    // console.log("vamos a por pils!")
     dispatch(addSpa({
       details: "pils"
     }))
@@ -62,7 +57,7 @@ function OffcanvasExample() {
   }
 
   const myAccountPage = () => {
-    console.log("vamos a por my account!")
+    // console.log("vamos a por my account!")
     dispatch(addSpa({
       details: "myaccount"
     }))
@@ -70,7 +65,7 @@ function OffcanvasExample() {
   }
 
   const homePage = () => {
-    console.log("vamos a por Home!")
+    // console.log("vamos a por Home!")
     dispatch(addSpa({
       details: "home"
     }))
@@ -92,6 +87,7 @@ function OffcanvasExample() {
     setLogged(false)
   }
 
+  // console.log(jwt) 
   // console.log(userMailHeader) 
 
   if (jwt !== null) {
@@ -124,7 +120,7 @@ function OffcanvasExample() {
                         show={showCart}
                         onHide={() => setShowCart(false)}
                       />
-                      <NavDropdown className='variant'
+                      <NavDropdown className=''
                         title="Mi cuenta" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
 
@@ -188,14 +184,16 @@ function OffcanvasExample() {
                       <NavDropdown className='variant'
                         title="Login" bg="#C8dac7"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                        <Button variant="primary" onClick={() => setShow(true)}>
+
+                        <Button className="buttonDesignLogin" variant="" onClick={() => setShow(true)}>
                           Login
                         </Button>
                         <Login
                           show={show}
                           onHide={() => setShow(false)}
                         />
-                        <Button variant="primary" onClick={() => setModalShow(true)}>
+
+                        <Button className="buttonDesignLogin" variant="" onClick={() => setModalShow(true)}>
                           Register
                         </Button>
                         <Register

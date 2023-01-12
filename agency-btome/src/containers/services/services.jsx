@@ -160,7 +160,7 @@ const Services = () => {
     }, [criteria])
 
 
-    // console.log(services)
+    console.log(services)
 
     if (services.length === 0) {
         return (
