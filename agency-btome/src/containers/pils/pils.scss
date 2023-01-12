@@ -1,0 +1,27 @@
+.buttonSearchPils {
+    margin: 1em;
+    width: auto;
+    background-color: transparent !important;
+    border-color: black !important;
+    border-width: 0.1em !important;    
+    color: black !important;
+    text-size-adjust: auto;
+}
+.cardsPils {
+    background-color: beige;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    margin: 1em;
+    border-color: black !important;
+    border-width: 0.2em !important;  
+}
+.PilsDesign{
+    min-height: 100vh;
+}
+
+.pad {
+    padding-right: 10em;
+    padding-left: 10em;
+}

@@ -4,6 +4,7 @@ import "./allUsers.scss"
 import { bringAllUsers, deleteUser } from '../../../services/apicalls';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Table from 'react-bootstrap/Table';
 
 const AllUsers = () => {
 
@@ -60,24 +61,32 @@ const AllUsers = () => {
         return (
             // <pre>{JSON.stringify(allUsers, null, 2)}</pre>
             <div className='contentStyle2'>
+                <br></br>
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Client</th>
+                                    </tr>
+                                </thead>
                 {
                     allUsers.map(allUser => {
+                        console.log(allUser.client)
                         return (
-                            
-                            <Card style={{ width: '12rem' }} className="cards" key={allUser.mail}>
-                                <Card.Img variant="top" src={`https://robohash.org/YOUR-TE${allUser.mail}dsXT.png`} />
-                                <Card.Body>
-                                    <Card.Title>{allUser.name}</Card.Title>
-                                    <Card.Text>
-                                        {allUser.mail}
-                                    </Card.Text>
-                                   
-                                    <Button variant="warning" onClick={() => deleteMe(allUser.mail)}>Delete</Button>
-                                </Card.Body>
-                            </Card>
-                        )
-                    })
-                }
+                            <tbody>
+                                    <tr>
+                                        <td>{allUser.name}</td>
+                                        <td>{allUser.mail}</td>
+                                        <td>{allUser.phone}</td>
+                                        <td>{JSON.stringify(allUser.client)}</td>
+                                    </tr>
+                                </tbody>
+                                    )
+                                })
+                            }
+                            </Table>
             </div>
 
         )

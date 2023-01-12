@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container,Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { addSpa } from '../../../containers/SPA/spaSlice';
 
 import './profile.scss';
 
@@ -23,6 +25,7 @@ const Profile = () => {
     const [error, setError] = useState('');
     const userJWT = JSON.parse(localStorage.getItem("SAVEJWT"))
     const navigate = useNavigate()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         //This function is triggered when the component is mounted for the first time.
@@ -45,7 +48,16 @@ const Profile = () => {
 
     }, [userInfo]);
 
+    const servicesPage = () => {
+        console.log("vamos a por services!")
+        dispatch(addSpa({
+          details: "services"
+        }))
+        // navigate("/")
+      }
+
     console.log(userInfo)
+
     
 
     // if (error) {
@@ -55,7 +67,15 @@ const Profile = () => {
     return (
 <Container >
     <Row className='d-flex justify-content-center'>
-        
+        <Col className='profileInfo'>
+        <p><h2>Name:</h2>  {userInfo.name || "update your profile info" }</p>   <br />
+        <p> <h2>Phone:</h2> {userInfo.phone || "update your profile info" }</p>  <br />
+        <p> <h2>Email:</h2> {userInfo.mail}</p>  <br />
+        {/* <p> <h2>Password:</h2> {userInfo.password}</p>  */}
+        </Col>
+        <Col>
+        </Col>
+{/*         
                  <Card style={{ width: '12rem' }} className="cards">
                   <Card.Img className='imgCards' variant="top" src={`https://robohash.org/YOUR-TE${userInfo.mail}dsXT.png`} />
                       <Card.Body>
@@ -63,9 +83,9 @@ const Profile = () => {
                                <Card.Text>
                                     {userInfo.mail}
                                </Card.Text>
-                                 <Button variant="warning" onClick={()=> navigate("/films")}>Contratar servicios</Button>
+                                 <Button variant="warning" onClick={()=> servicesPage()}>Contratar servicios</Button>
                           </Card.Body>
-              </Card>
+              </Card> */}
        
     </Row>
 </Container>

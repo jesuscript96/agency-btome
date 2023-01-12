@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./userOrders.scss"
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
 
 
 import { bringUserOrders } from '../../../services/apicalls';
@@ -64,46 +65,35 @@ const UserOrders = () => {
        
         return (
             // <pre>{JSON.stringify(userOrders, null, 2)}</pre>
-            <div className='contentStyle'> 
+            <div className='contentStyleOrders'> 
                 
+                <div><h1> Todos los alquileres realizados por el usuario </h1> </div>
               
+                <Accordion defaultActiveKey="1">
                 {userOrders.map(userOrder => {
                     
-                  <div><h1> Todos los alquileres realizados por el usuario </h1> </div>
                 return (
-                    
-                        <Card style={{ width: '12em' }} className="cards" key={userOrder.id_order}>
-                    <Card.Img className='imgCards' variant="top" src={"https://www.themoviedb.org/t/p/w600_and_h900_bestv2/b0MxU37dNmMwKtoPVYPKOZSIrIn.jpg"} />
-                    <Card.Body>
-                        <Card.Title>{userOrder.name}</Card.Title>
-                        <Card.Text>
-                            {userOrder.type}
-                        </Card.Text>
-                        <Card.Text>
-                                Desde  {userOrder.order_date} <br></br>
-                               
-                        </Card.Text>
-                        <Card.Text>
-                            {userOrder.price}
-                        </Card.Text>
-                        <Button className="buttonSearch" variant="warning" size="lg" active 
+
+      <Accordion.Item eventKey={userOrder.id_ordersservices}>
+        <Accordion.Header>Servicio: {userOrder.name}</Accordion.Header>
+        <Accordion.Body>
+        <p><h4>Precio:</h4>  {userOrder.price} €</p>   <br />
+        <p> <h4>Date:</h4> {userOrder.order_date}</p>  <br />
+        <Button className="buttonSearch" variant="warning" size="lg" active 
                          onClick={() => clickedService(userOrder)} 
                         name="web">Dejar una reseña</Button>
-                        {/* <Register
-                          show={modalShow}
-                          onHide={() => setModalShow(false)}
-                        /> */}
+                        
                         <Review
                             show={showReview}
                             onHide={() => setShowReview(false)}
                         />
-                    </Card.Body>
-                            </Card>
-                    
-                )
-
+        
+        </Accordion.Body>
+      </Accordion.Item>                    
+                )               
                 
             })}
+            </Accordion>
             </div>
         )
     } else {

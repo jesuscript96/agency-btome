@@ -99,8 +99,8 @@ function Cart(props) {
                                             <div className="ms-2 me-auto">
                                                 <div className="fw-bold">{service.name}</div>
                                             </div>
-                                            <Badge bg="primary" pill>
-                                                {service.price}€
+                                            <Badge bg="" className="cartPrices" pill> <p>{service.price}€</p>
+                                                
                                             </Badge>
                                         </ListGroup.Item>
                                     )
@@ -110,13 +110,13 @@ function Cart(props) {
                         <div>
                             <Button
                                  onClick={() => orderServices()} 
-                                className="buttonDesignLogin">Tramitar pedido</Button>
+                                className="buttonDesignCart">Tramitar pedido</Button>
                         </div>
     
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button className="buttonDesignCart" onClick={props.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
         );
