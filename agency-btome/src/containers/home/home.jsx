@@ -82,18 +82,18 @@ function Home() {
                     </div>
                 </Col>
             </Row>
-            <Row className="homeRow beige">
+            {/* <Row className="homeRow beige">
                 <Col className="homeOpinions">
                     <Carousel variant="dark" className="carouselCustom">
                         <Carousel.Item className="carouselCustom">
-                            {/* <div>
+                            <div>
                             <img
                                 className="d-block w-25"
                                 src="https://www.lullabybebe.com/wp-content/uploads/2019/10/pack-2-camisetas-divertidas-super-hermano-de-nombre-super-hermana-de-nombre-_clipped_rev_1k.jpg"
                                 alt="First slide"
                                 />
                             </div>
-                                 */}
+                                
                             <div>
                             <h5>HermanosCamiseta</h5>
                                 <p>No entendíamos porque no funcionaba nuestro go-to-market, así que contratamos a BToMe para diseñar la estrategia digital, desde la web y su UX hasta estrategias de CRM o contenido. Los resultados fueron inmediatos!</p>
@@ -103,14 +103,14 @@ function Home() {
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item className="carouselCustom">
-                            {/* <div>
+                            <div>
 
                             <img
                                 className="d-block w-25"
                                 src="https://scontent.fvlc6-1.fna.fbcdn.net/v/t39.30808-6/303117857_482530743884811_9211355143098927343_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=KiN3McyB9TQAX8lH7fN&_nc_ht=scontent.fvlc6-1.fna&oh=00_AfDwQm3pLJSPfOxq1wREeGaqhUAryvH0lna9PoKjLa_xZQ&oe=63C4C696"
                                 alt="Second slide"
                             />
-                            </div> */}
+                            </div>
                             <div>
 
                                 <h5>Ópticas Chuliá</h5>
@@ -122,7 +122,7 @@ function Home() {
                         </Carousel.Item>
                     </Carousel>
                 </Col>
-            </Row>
+            </Row> */}
         </Container>
     )
 }

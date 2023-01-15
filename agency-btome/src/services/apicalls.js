@@ -207,3 +207,20 @@ export const newReview = async (review, jwt) => {
       }
     })
 };
+
+export const updateUserName = async (name, jwt) => {
+  console.log(name)
+  return await axios.put("http://localhost:3000/users/update/name", name, {
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      }
+    })
+};
+
+export const updateUserPhone = async (phone, jwt) => {
+  return await axios.put("http://localhost:3000/users/update/phone", phone, {
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      }
+    })
+};
