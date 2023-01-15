@@ -24,7 +24,7 @@ const ServicesDetail = () => {
   const dispatch = useDispatch();
 
   
-  let loged = localStorage.getItem("SAVEUSERMAIL");
+  let loged = localStorage.getItem("SAVEJWT");
   
   const selectedService = useSelector(serviceData);
   
@@ -130,19 +130,13 @@ const ServicesDetail = () => {
       return (
 
         <Container fluid className="filmsViewDesign">
+         <Row>
+              <div className="titleDesign text-fluid">{selectedService?.name}</div>
+          </Row>
           <Row className="align-items-center">
             <Col >
-              <div><Image className="moviePicView fluid" src={`https://robohash.org/YOUR-TE${selectedService.type}dsXT.png`} /></div>
+              <div><Image className="servicePicView fluid" src={selectedService.img} /></div>
             </Col>
-            <Col className=" align-items-center">
-              <div className="titleDesign text-fluid">{selectedService?.name}</div>
-              <div className="genreDesign">Género: {selectedService?.type}</div>
-              <div className="ratingDesign align-items-center">Puntuación: {selectedService?.price}</div>
-              <div className="sinopsisDesign text-break "> {selectedService?.description}</div>
-            </Col>
-
-
-
           </Row>
           <Row>
           {
