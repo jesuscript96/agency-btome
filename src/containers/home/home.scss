@@ -1,0 +1,44 @@
+.homeRow {
+    min-height: 60vh;
+    border-color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+.beige {
+    background-color: bisque;
+}
+
+.buttonSearchHome {
+    width: auto;
+    margin: 0.5em;
+    background-color: transparent !important;
+    border-color: black !important;
+    border-width: 0.1em !important;    
+    color: black !important;
+    text-size-adjust: auto;
+}
+
+.homeText {
+    max-width: 70vw;
+    text-indent: 50px;
+    text-align: justify;
+    letter-spacing: 2px;
+    align-items: center;
+    justify-items: center;
+
+}
+
+.carouselCustom{
+    align-items: center;
+    min-height: 40vh;
+    max-width: 60vw;
+    justify-items: center;
+justify-content: center;
+}
+
+.homeOpinions {
+    
+    align-items: center;
+    justify-items: center;
+}
