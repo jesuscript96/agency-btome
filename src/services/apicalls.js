@@ -5,7 +5,7 @@ export const loginUser = async (body, res) => {
 
     try {
         let resp = await axios.post(
-            "http://localhost:3000/auth/login",
+            "https://backendagency-production.up.railway.app/auth/login",
             body
         );
         
@@ -29,7 +29,7 @@ export const registerUser = async (body) => {
     
 
     return axios.post(
-        "http://localhost:3000/auth/register",
+        "https://backendagency-production.up.railway.app/auth/register",
         body
         // {
         //     "mail": 'elbanking@punsdhi.com',
@@ -42,7 +42,7 @@ export const bringServices = () => {
 
     try {
 
-        return axios.get("http://localhost:3000/services/");
+        return axios.get("https://backendagency-production.up.railway.app/services/");
 
 
     } catch (error) {
@@ -54,7 +54,7 @@ export const bringFilteredServices = (type, price) => {
 
     try {
 
-        return axios.get(`http://localhost:3000/services/type/${type}/price/${price}`);
+        return axios.get(`https://backendagency-production.up.railway.app/services/type/${type}/price/${price}`);
 
 
     } catch (error) {
@@ -68,7 +68,7 @@ export const bringPils = async () => {
     
     try {
         
-        return await axios.get(`http://localhost:3000/pils/`)
+        return await axios.get(`https://backendagency-production.up.railway.app/pils/`)
         
     } catch (error) {
         
@@ -80,7 +80,7 @@ export const bringPilsFilteredByName = async (criteria) => {
     
     try {
 
-        return await axios.get(`http://localhost:3000/pils/title/${criteria}`)
+        return await axios.get(`https://backendagency-production.up.railway.app/pils/title/${criteria}`)
         
     } catch (error) {
         
@@ -92,7 +92,7 @@ export const bringPilsFilteredByType = async (type) => {
     
     try {
 
-        return await axios.get(`http://localhost:3000/pils/type/${type}`)
+        return await axios.get(`https://backendagency-production.up.railway.app/pils/type/${type}`)
         
     } catch (error) {
         
@@ -104,7 +104,7 @@ export const bringServiceReviews = async (type) => {
     
     try {
 
-        return await axios.get(`http://localhost:3000/services/reviews/${type}`)
+        return await axios.get(`https://backendagency-production.up.railway.app/services/reviews/${type}`)
         
     } catch (error) {
         
@@ -116,7 +116,7 @@ export const bringServiceReviews = async (type) => {
 export const bringUserInfo = async (jwt) => {
     console.log("entro a traer al user")
     console.log(jwt)
-    return await axios.get("http://localhost:3000/users/profile", {
+    return await axios.get("https://backendagency-production.up.railway.app/users/profile", {
   headers: {
     'Authorization': `Bearer ${jwt}`
   }
@@ -139,7 +139,7 @@ export const bringUserInfo = async (jwt) => {
 };
 
 export const newOrder = async (order, jwt) => {
-    return await axios.post("http://localhost:3000/orders/neworder", order, {
+    return await axios.post("https://backendagency-production.up.railway.app/orders/neworder", order, {
         headers: {
           'Authorization': `Bearer ${jwt}`
         }
@@ -147,7 +147,7 @@ export const newOrder = async (order, jwt) => {
 };
 
 export const addServiceToOrder = async (order, jwt) => {
-    return await axios.post("http://localhost:3000/orders/addservice", order, {
+    return await axios.post("https://backendagency-production.up.railway.app/orders/addservice", order, {
         headers: {
           'Authorization': `Bearer ${jwt}`
         }
@@ -156,7 +156,7 @@ export const addServiceToOrder = async (order, jwt) => {
 
 export const bringUserOrders = async (jwt) => {
 
-    return await axios.get("http://localhost:3000/users/orders", {
+    return await axios.get("https://backendagency-production.up.railway.app/users/orders", {
   headers: {
     'Authorization': `Bearer ${jwt}`
   }
@@ -165,7 +165,7 @@ export const bringUserOrders = async (jwt) => {
 
 export const bringUserReviews = async (jwt) => {
 
-    return await axios.get("http://localhost:3000/users/reviews", {
+    return await axios.get("https://backendagency-production.up.railway.app/users/reviews", {
   headers: {
     'Authorization': `Bearer ${jwt}`
   }
@@ -174,7 +174,7 @@ export const bringUserReviews = async (jwt) => {
 
 export const bringAllUsers = async (jwt) => {
 
-    return await axios.get("http://localhost:3000/users/", {
+    return await axios.get("https://backendagency-production.up.railway.app/users/", {
   headers: {
     'Authorization': `Bearer ${jwt}`
   }
@@ -183,7 +183,7 @@ export const bringAllUsers = async (jwt) => {
 
 export const deleteUser = async (email, jwt) => {
 
-    return await axios.delete("http://localhost:3000/users/delete/" + email, {
+    return await axios.delete("https://backendagency-production.up.railway.app/users/delete/" + email, {
         headers: {
           'Authorization': `Bearer ${jwt}`
         }
@@ -193,7 +193,7 @@ export const deleteUser = async (email, jwt) => {
 
 export const bringAllOrders = async (jwt) => {
 
-    return await axios.get("http://localhost:3000/orders/", {
+    return await axios.get("https://backendagency-production.up.railway.app/orders/", {
   headers: {
     'Authorization': `Bearer ${jwt}`
   }
@@ -201,7 +201,7 @@ export const bringAllOrders = async (jwt) => {
 };
 
 export const newReview = async (review, jwt) => {
-  return await axios.post("http://localhost:3000/reviews/newreview", review, {
+  return await axios.post("https://backendagency-production.up.railway.app/reviews/newreview", review, {
       headers: {
         'Authorization': `Bearer ${jwt}`
       }
@@ -210,7 +210,7 @@ export const newReview = async (review, jwt) => {
 
 export const updateUserName = async (name, jwt) => {
   console.log(name)
-  return await axios.put("http://localhost:3000/users/update/name", name, {
+  return await axios.put("https://backendagency-production.up.railway.app/users/update/name", name, {
       headers: {
         'Authorization': `Bearer ${jwt}`
       }
@@ -218,7 +218,7 @@ export const updateUserName = async (name, jwt) => {
 };
 
 export const updateUserPhone = async (phone, jwt) => {
-  return await axios.put("http://localhost:3000/users/update/phone", phone, {
+  return await axios.put("https://backendagency-production.up.railway.app/users/update/phone", phone, {
       headers: {
         'Authorization': `Bearer ${jwt}`
       }
