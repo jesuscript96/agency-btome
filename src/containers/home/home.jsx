@@ -29,7 +29,7 @@ function Home() {
     return (
         <Container fluid>
             <Row className="homeRow beige">
-                <Col>
+                <Col sm={8} md={6} xs={10} lg={4}>
                     <div>
                         <h2>BToMe, tu agencia líder en performanze digital</h2>
                     </div>
@@ -39,12 +39,12 @@ function Home() {
                         </Button>
                     </div>
                 </Col>
-                <Col>
+                <Col sm={8} md={6} xs={10} lg={4}>
                 <img src="https://mott.pe/noticias/wp-content/uploads/2021/01/mejores-agencias-de-marketing-digital-en-el-mundo.png" className="imgServices"/>
                 </Col>
             </Row>
             <Row className="homeRow">
-                <Col className="homeText">
+                <Col sm={8} md={6} xs={10} lg={4} className="homeText">
                     <div className="homeText">
                         <h3>Somos un equipo de expertos de alto rendimiento cuyo objetivo es estar a la vanguardia del mundo tecnológico y digital. Esto nos permite poder aplicar las estrategias más innovadoras y obtener si no resultados, conclusiones firmes.
 
@@ -53,7 +53,7 @@ function Home() {
                 </Col>
             </Row>
             <Row className="homeRow beige">
-                <Col>
+                <Col sm={8} md={6} xs={10} lg={4}>
                     <div>
                         <h2>Descubre nuestros los servicios que transformarán tu negocio</h2>
                     </div>
@@ -63,15 +63,15 @@ function Home() {
                         </Button>
                     </div>
                 </Col>
-                <Col>
+                <Col sm={8} md={6} xs={10} lg={4}>
                 <img src="https://directivosygerentes.es/wp-content/uploads/2017/02/transformacion-digital-negocio.1-1024x678.jpg" className="imgServices"/>
                 </Col>
             </Row>
             <Row className="homeRow">
-                <Col>
+                <Col sm={8} md={6} xs={10} lg={4}>
                 <img src="https://eoienglish.es/images/2021/03/10/news-1644696_1280.png" className="imgServices2"/>
                 </Col>
-                <Col>
+                <Col sm={8} md={6} xs={10} lg={4}>
                     <div>
                         <h2>Manténte informado sobre las novedades y mejores prácticas del sector</h2>
                     </div>
