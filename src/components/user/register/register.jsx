@@ -106,9 +106,11 @@ function Register(props) {
   }
 
   const jwt = localStorage.getItem("SAVEJWT")
+  console.log(success.loginSuccess)
+  console.log(jwt)
 
 
-  if (success.loginSuccess === "") {
+  if (jwt === "" || jwt === null) {
     return (
       <Modal className='modals'
         {...props}
@@ -161,7 +163,10 @@ function Register(props) {
       <Modal.Body className='modalDesign'>
         <div className='loginDesign'>
           <div>
-            <div className="successInput"><h2>{success.loginSuccess}</h2></div>
+            <div className="successInput"><h2>
+              {/* {success.loginSuccess} */}
+              Register successful. Please close this tab.
+              </h2></div>
           </div>
 
         </div>

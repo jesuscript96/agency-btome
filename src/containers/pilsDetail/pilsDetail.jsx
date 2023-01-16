@@ -32,14 +32,14 @@ const PilsDetail = () => {
         <Row>
         <div className="titleDesign text-fluid">{selectedPil?.title}</div>
         </Row>
-        <Row className="align-items-center">
-          <Col  sm={8} md={6} xs={10} lg={4}>
+        <Row className="align-items-center pilsDetailsAlignment">
+          <Col  sm={10} md={8} xs={12} lg={6}>
             <div><Image className="pilPicView fluid" src={selectedPil.img} /></div>
             <div className="ratingDesign">date: {selectedPil?.creation_date}</div>
           </Col>
           </Row>
           <Row className=" align-items-center justify-content-center">
-          <Col  sm={8} md={6} xs={10} lg={4} className=" align-items-center">
+          <Col sm={10} md={9} xs={12} lg={8} className=" align-items-center">
             <div className="reviewDesign text-break "> {selectedPil?.text}</div>
           <Button className="buttonDesign"
               onClick={() => blogPage()}

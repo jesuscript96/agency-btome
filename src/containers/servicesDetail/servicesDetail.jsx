@@ -84,11 +84,11 @@ const ServicesDetail = () => {
           <Row>
               <div className="titleDesign text-fluid">{selectedService?.name}</div>
           </Row>
-          <Row className="align-items-center">
-            <Col  sm={8} md={6} xs={10} lg={4}>
+          <Row className="align-items-center lilMargin">
+            <Col  sm={10} md={8} xs={12} lg={6}>
               <div><Image className="servicePicView fluid" src={selectedService.img} /></div>
             </Col>
-            <Col  sm={8} md={6} xs={10} lg={4} className=" align-items-center">
+            <Col  sm={10} md={8} xs={12} lg={6} className=" align-items-center">
               <div className="sinopsisDesign text-break "> {selectedService?.description}</div>
               <Button className="serviceButtonDesign"
                 onClick={() => addToChartOnClick(selectedService)}
@@ -127,9 +127,12 @@ const ServicesDetail = () => {
          <Row>
               <div className="titleDesign text-fluid">{selectedService?.name}</div>
           </Row>
-          <Row className="align-items-center">
-            <Col  sm={8} md={6} xs={10} lg={4}>
+          <Row className="align-items-center lilMargin">
+            <Col  sm={10} md={8} xs={12} lg={6}>
               <div><Image className="servicePicView fluid" src={selectedService.img} /></div>
+            </Col>
+            <Col  sm={10} md={8} xs={12} lg={6} className=" align-items-center">
+              <div className="sinopsisDesign text-break "> {selectedService?.description}</div>
             </Col>
           </Row>
           <Row>
