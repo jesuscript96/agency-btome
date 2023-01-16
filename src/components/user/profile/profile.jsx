@@ -109,7 +109,7 @@ const Profile = () => {
     return (
         <Container >
             <Row className='d-flex justify-content-center'>
-                <Col className='profileInfo'>
+                <Col  sm={8} md={6} xs={10} lg={4} className='profileInfo'>
                     <p><h2>Name:</h2></p>   <br />
                     <div className='displayFlexin'>
                         <Form.Control className="formProfile" type="email" placeholder={userInfo.name || "update your profile info"} name="name" onChange={(e) => inputHandler(e)} /><Icon.Pencil className="margining"
@@ -128,7 +128,7 @@ const Profile = () => {
 
                     {/* <p> <h2>Password:</h2> {userInfo.password}</p>  */}
                 </Col>
-                <Col>
+                <Col  sm={8} md={6} xs={10} lg={4}>
                 </Col>
                 {/*         
                  <Card style={{ width: '12rem' }} className="cards">

@@ -226,7 +226,7 @@ const Services = () => {
         return (
             <Container fluid className="servicesDesign " >
                 <Row className="preServices h-50">
-                    <Col className="preServices">
+                    <Col  sm={8} md={6} xs={10} lg={4} className="preServices">
                         <div className="preServices">
                             <h1>Nuestros Servicios</h1>
                             <h3>Sea cual sea su objetivo, tenemos servicios a la altura. Somos expertos en Growth Marketing. ¿Cómo podemos llevarte al éxito?</h3>
@@ -235,10 +235,10 @@ const Services = () => {
                     </Col>
                 </Row>
                 <Row className="filter h-50">
-                    <Col>
+                    <Col  sm={8} md={6} xs={10} lg={4}>
                         <Container fluid>
                             <Row className="filter">
-                                <Col>
+                                <Col  sm={8} md={6} xs={10} lg={4}>
                                     <h3>Propósito:</h3>
                                     <div>
                                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
@@ -250,7 +250,7 @@ const Services = () => {
                                  </Col> */}
                             </Row>
                             <Row className="filter">
-                                <Col>
+                                <Col  sm={8} md={6} xs={10} lg={4}>
                                     <h3>Presupuesto:</h3>
                                     <div className="inputsContainer">
                                         <div className="errorInput">{priceError.priceError}
@@ -268,7 +268,7 @@ const Services = () => {
 
                 <Row className="filter">
 
-                    <Col><Button className="buttonSearch" size="lg" active onClick={allServices}>Todos</Button>
+                    <Col  sm={8} md={6} xs={10} lg={4}><Button className="buttonSearch" size="lg" active onClick={allServices}>Todos</Button>
                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
@@ -285,9 +285,9 @@ const Services = () => {
                             if (service.id_service % 2 === 0) {
                                 return (
 
-                                    <Container>
+                                    <Container fluid>
                                         <Row className="servicesRow">
-                                            <Col className="serviceMoreInfo">
+                                            <Col  sm={8} md={6} xs={10} lg={4} className="serviceMoreInfo">
                                                 <div>
                                                     <h1>{service.name}</h1>
                                                 </div>
@@ -297,16 +297,16 @@ const Services = () => {
                                                     </Button>
                                                 </div>
                                             </Col>
-                                            <Col>
+                                            <Col  sm={8} md={6} xs={10} lg={4}>
                                             <img src={service.img} className="imgServices"/>
                                             </Col>
                                         </Row>
                                     </Container>)
                             } else {
                                 return (
-                                    <Container>
+                                    <Container fluid>
                                         <Row className="servicesRow par">
-                                            <Col>
+                                            <Col  sm={8} md={6} xs={10} lg={4}>
                                             <img src={service.img} className="imgServices"/>
                                             </Col>
                                             <Col className="serviceMoreInfo">

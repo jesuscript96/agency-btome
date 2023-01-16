@@ -146,10 +146,10 @@ const Pils = () => {
   <br></br>
                 <Row   >
 
-                    <Col><Button className="buttonSearchPils" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
-                <Col>  <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
-                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
-                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
+                    <Col  sm={8} md={6} xs={10} lg={4}><Button className="buttonSearchPils" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
+                <Col  sm={8} md={6} xs={10} lg={4}>  <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
+                 <Col  sm={8} md={6} xs={10} lg={4}> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
+                 <Col  sm={8} md={6} xs={10} lg={4}> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
 
                 </Row>
               
@@ -178,10 +178,10 @@ const Pils = () => {
 <br></br>
                 <Row   >
 
-                <Col><Button className="buttonSearchPils" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
-                <Col>  <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
-                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
-                 <Col> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
+                <Col  sm={8} md={6} xs={10} lg={4}><Button className="buttonSearchPils" variant="warning" size="lg" active onClick={allPils}>Todas</Button></Col>
+                <Col  sm={8} md={6} xs={10} lg={4}>  <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="sem">Crecimiento rápido</Button></Col>
+                 <Col  sm={8} md={6} xs={10} lg={4}> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="seo">Marca digital</Button></Col> 
+                 <Col  sm={8} md={6} xs={10} lg={4}> <Button className="buttonSearchPils" variant="warning" size="lg" active onClick={(e) => pilsFilteredByType(e)} name="web">Digitalización</Button></Col> 
 
                 </Row>
 

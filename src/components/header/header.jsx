@@ -172,7 +172,7 @@ function OffcanvasExample() {
                   </Offcanvas.Header>
                   <Offcanvas.Body className="justify-content-end flex-grow-2">
                     <Nav className="justify-content-end flex-grow-2 pe-5">
-                      <Nav.Link onClick={()=>servicesPage()}>Home</Nav.Link>
+                      <Nav.Link onClick={()=>homePage()}>Home</Nav.Link>
                       <Nav.Link onClick={()=>servicesPage()}>Servicios</Nav.Link>
                       <Nav.Link onClick={()=>pilsPage()}>Blog</Nav.Link>
                       <Nav.Link onClick={() => setShowCart(true)}><Icon.Cart /></Nav.Link>

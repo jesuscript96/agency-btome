@@ -91,10 +91,10 @@ const ServicesDetail = () => {
               <div className="titleDesign text-fluid">{selectedService?.name}</div>
           </Row>
           <Row className="align-items-center">
-            <Col >
+            <Col  sm={8} md={6} xs={10} lg={4}>
               <div><Image className="servicePicView fluid" src={selectedService.img} /></div>
             </Col>
-            <Col className=" align-items-center">
+            <Col  sm={8} md={6} xs={10} lg={4} className=" align-items-center">
               <div className="sinopsisDesign text-break "> {selectedService?.description}</div>
               <Button className="serviceButtonDesign"
                 onClick={() => addToChartOnClick(selectedService)}
@@ -134,7 +134,7 @@ const ServicesDetail = () => {
               <div className="titleDesign text-fluid">{selectedService?.name}</div>
           </Row>
           <Row className="align-items-center">
-            <Col >
+            <Col  sm={8} md={6} xs={10} lg={4}>
               <div><Image className="servicePicView fluid" src={selectedService.img} /></div>
             </Col>
           </Row>

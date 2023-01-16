@@ -12,14 +12,14 @@ function Home() {
     const dispatch = useDispatch();
 
     const servicesPage = () => {
-        console.log("vamos a por services!")
+        
         dispatch(addSpa({
             details: "services"
         }))
         // navigate("/")
     }
     const pilsPage = () => {
-        console.log("vamos a por pils!")
+        
         dispatch(addSpa({
             details: "pils"
         }))
@@ -40,7 +40,7 @@ function Home() {
                     </div>
                 </Col>
                 <Col sm={8} md={6} xs={10} lg={4}>
-                <img src="https://mott.pe/noticias/wp-content/uploads/2021/01/mejores-agencias-de-marketing-digital-en-el-mundo.png" className="imgServices"/>
+                <img src="https://mott.pe/noticias/wp-content/uploads/2021/01/mejores-agencias-de-marketing-digital-en-el-mundo.png" className="imgHome"/>
                 </Col>
             </Row>
             <Row className="homeRow">
@@ -64,12 +64,12 @@ function Home() {
                     </div>
                 </Col>
                 <Col sm={8} md={6} xs={10} lg={4}>
-                <img src="https://directivosygerentes.es/wp-content/uploads/2017/02/transformacion-digital-negocio.1-1024x678.jpg" className="imgServices"/>
+                <img src="https://directivosygerentes.es/wp-content/uploads/2017/02/transformacion-digital-negocio.1-1024x678.jpg" className="imgHome"/>
                 </Col>
             </Row>
             <Row className="homeRow">
                 <Col sm={8} md={6} xs={10} lg={4}>
-                <img src="https://eoienglish.es/images/2021/03/10/news-1644696_1280.png" className="imgServices2"/>
+                <img src="https://eoienglish.es/images/2021/03/10/news-1644696_1280.png" className="imgHome"/>
                 </Col>
                 <Col sm={8} md={6} xs={10} lg={4}>
                     <div>

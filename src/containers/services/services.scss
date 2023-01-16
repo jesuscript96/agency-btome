@@ -6,7 +6,7 @@
 };
 
 .preServices {
-    // width: 50vw;
+    width: 100%;
     // display: flex;
     text-align: center;
     justify-self: center;
@@ -42,7 +42,7 @@
 //width: 10vw;
 margin: 2em;
 height: 40vh;
-max-width: 70vw;
+max-width: fit-content;
 border-radius: 1em;
 box-shadow: 18px 18px 10px  rgba(6, 6, 6, 0.3);
 };
