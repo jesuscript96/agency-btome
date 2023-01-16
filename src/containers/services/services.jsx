@@ -168,9 +168,7 @@ const Services = () => {
                     </Col>
                 </Row>
                 <Row className="filter h-50">
-                    <Col>
-                        <Container fluid>
-                            <Row className="filter">
+                   
                                 <Col>
                                     <h3>Propósito:</h3>
                                     <div>
@@ -181,8 +179,6 @@ const Services = () => {
                                 </Col>
                                 {/* <Col>
                                  </Col> */}
-                            </Row>
-                            <Row className="filter">
                                 <Col>
                                     <h3>Presupuesto:</h3>
                                     <div className="inputsContainer">
@@ -193,9 +189,6 @@ const Services = () => {
                                         </div>
                                     </div>
                                 </Col>
-                            </Row>
-                        </Container>
-                    </Col>
 
                 </Row>
 
@@ -228,10 +221,8 @@ const Services = () => {
                     </Col>
                 </Row>
                 <Row className="filter h-50">
-                    <Col  sm={8} md={6} xs={10} lg={4}>
-                        <Container fluid>
-                            <Row className="filter">
-                                <Col  sm={8} md={6} xs={10} lg={4}>
+                   
+                                <Col>
                                     <h3>Propósito:</h3>
                                     <div>
                                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
@@ -241,9 +232,7 @@ const Services = () => {
                                 </Col>
                                 {/* <Col>
                                  </Col> */}
-                            </Row>
-                            <Row className="filter">
-                                <Col  sm={8} md={6} xs={10} lg={4}>
+                                <Col>
                                     <h3>Presupuesto:</h3>
                                     <div className="inputsContainer">
                                         <div className="errorInput">{priceError.priceError}
@@ -253,15 +242,12 @@ const Services = () => {
                                         </div>
                                     </div>
                                 </Col>
-                            </Row>
-                        </Container>
-                    </Col>
 
                 </Row>
 
                 <Row className="filter">
 
-                    <Col  sm={8} md={6} xs={10} lg={4}><Button className="buttonSearch" size="lg" active onClick={allServices}>Todos</Button>
+                    <Col  sm={10} md={8} xs={12} lg={6}><Button className="buttonSearch" size="lg" active onClick={allServices}>Todos</Button>
                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="sem">Crecimiento rápido</Button>
                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="seo">Marca digital</Button>
                         <Button className="buttonSearch" size="lg" active onClick={(e) => clickedServiceGoal(e)} name="web">Digitalización</Button></Col>
@@ -290,8 +276,11 @@ const Services = () => {
                                                     </Button>
                                                 </div>
                                             </Col>
-                                            <Col  sm={8} md={6} xs={10} lg={4}>
+                                            <Col  sm={8} md={6} xs={10} lg={4} className="alignImg">
+                                                <div className="alignImg">
+
                                             <img src={service.img} className="imgServices"/>
+                                                </div>
                                             </Col>
                                         </Row>
                                     </Container>)
@@ -299,8 +288,11 @@ const Services = () => {
                                 return (
                                     <Container fluid>
                                         <Row className="servicesRow par">
-                                            <Col  sm={8} md={6} xs={10} lg={4}>
+                                            <Col  sm={8} md={6} xs={10} lg={4} className="alignImg">
+                                                <div className="alignImg">
+
                                             <img src={service.img} className="imgServices"/>
+                                                </div>
                                             </Col>
                                             <Col className="serviceMoreInfo">
                                                 <div>

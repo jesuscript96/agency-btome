@@ -44,7 +44,7 @@ function Home() {
                 </Col>
             </Row>
             <Row className="homeRow">
-                <Col sm={8} md={6} xs={10} lg={4} className="homeText">
+                <Col sm={10} md={8} xs={12} lg={8} className="homeText">
                     <div className="homeText">
                         <h3>Somos un equipo de expertos de alto rendimiento cuyo objetivo es estar a la vanguardia del mundo tecnológico y digital. Esto nos permite poder aplicar las estrategias más innovadoras y obtener si no resultados, conclusiones firmes.
 

@@ -5,6 +5,11 @@
    
 };
 
+.alignImg {
+    align-items: center;
+    align-self: center;
+}
+
 .preServices {
     width: 100%;
     // display: flex;
@@ -13,7 +18,7 @@
 }
 .filter {
     // width: 50vw;
-    display: flex;
+    // display: flex;
     text-align: start;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -30,6 +35,7 @@
     border: 1em;
     border-color: brown;
     min-height: 50vh;
+    padding: 2em;
     
 }
 

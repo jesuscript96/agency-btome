@@ -13,7 +13,7 @@
     align-items: center;
     justify-items: center;
     text-align: center;
-    // margin: 1em;
+    margin: 1em;
     border-color: black !important;
     border-width: 0.2em !important;  
 }
@@ -22,6 +22,9 @@
 }
 
 .pad {
-    padding-right: 10em;
-    padding-left: 10em;
+    // padding-right: 10em;
+    // padding-left: 10em;
+    justify-items: center;
+    align-self: center;
+
 }

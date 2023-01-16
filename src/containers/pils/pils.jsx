@@ -192,6 +192,7 @@ const Pils = () => {
                 pils.map(pil => {
                     return (
                         <Col md={3} sm={4} className="cardsPils">
+                            <div className="cardsPils">
 
                         <Card 
                         onClick={() => clickedPil(pil)} 
@@ -210,6 +211,8 @@ const Pils = () => {
                              name="web">Leer más</Button>
                         </Card.Body>
                     </Card>
+                            </div>
+
                         </Col>
                     )
                 })
