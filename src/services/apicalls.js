@@ -114,28 +114,11 @@ export const bringServiceReviews = async (type) => {
 
 
 export const bringUserInfo = async (jwt) => {
-    console.log("entro a traer al user")
-    console.log(jwt)
     return await axios.get("https://backendagency-production.up.railway.app/users/profile", {
   headers: {
     'Authorization': `Bearer ${jwt}`
   }
 })
-// .catch(function (error) {
-//   if (error.response) {
-//     // Request made and server responded
-//     console.log(error.response.data);
-//     console.log(error.response.status);
-//     console.log(error.response.headers);
-//   } else if (error.request) {
-//     // The request was made but no response was received
-//     console.log(error.request);
-//   } else {
-//     // Something happened in setting up the request that triggered an Error
-//     console.log('Error', error.message);
-//   }
-
-// });
 };
 
 export const newOrder = async (order, jwt) => {
@@ -209,7 +192,6 @@ export const newReview = async (review, jwt) => {
 };
 
 export const updateUserName = async (name, jwt) => {
-  console.log(name)
   return await axios.put("https://backendagency-production.up.railway.app/users/update/name", name, {
       headers: {
         'Authorization': `Bearer ${jwt}`

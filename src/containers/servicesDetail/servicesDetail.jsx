@@ -58,10 +58,7 @@ const ServicesDetail = () => {
 }, [reviews]);
 
   const addToChartOnClick = (service) => {
-    console.log("carreando")
     //Guardo la service seleccionada en redux.
-    console.log(service)
-    console.log(service.id_service)
     dispatch(addServiceToChart({ 
       details: service.id_service,
       name: service.name,
@@ -69,13 +66,10 @@ const ServicesDetail = () => {
      }));
 
     setTimeout(() => {
-      console.log("he dispachao")
       dispatch(addSpa({
         details: "services"
       }))
     }, 750);
-
-    console.log("he navegao")
 
   }
 

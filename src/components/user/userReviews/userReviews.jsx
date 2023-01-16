@@ -69,39 +69,7 @@ const UserReviews = () => {
             </div>
         )
        
-        // return (
-        //     // <pre>{JSON.stringify(userReviews, null, 2)}</pre>
-        //     <div className='contentStyle'> 
-                
-              
-        //         {userReviews.map(userReview => {
-        //             console.log(userReview);
-        //           <div><h1> Todos los alquileres realizados por el usuario </h1> </div>
-        //         return (
-                    
-        //                 <Card style={{ width: '12em' }} className="cards" key={userReview.id_review}>
-        //             <Card.Img className='imgCards' variant="top" src={"https://www.themoviedb.org/t/p/w600_and_h900_bestv2/b0MxU37dNmMwKtoPVYPKOZSIrIn.jpg"} />
-        //             <Card.Body>
-        //                 <Card.Title>{userReview.name}</Card.Title>
-        //                 <Card.Text>
-        //                     {userReview.text}
-        //                 </Card.Text>
-        //                 <Card.Text>
-        //                         Desde  {userReview.creation_date} <br></br>
-                               
-        //                 </Card.Text>
-        //                 <Card.Text>
-        //                     {userReview.rating}
-        //                 </Card.Text>
-        //             </Card.Body>
-        //                     </Card>
-                    
-        //         )
-
-                
-        //     })}
-        //     </div>
-        // )
+       
     } else {
         return <pre>Todavía no tienes reviews</pre>
     }

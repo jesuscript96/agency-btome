@@ -35,9 +35,7 @@ const AllOrders = () => {
 
     }, [allOrders]);
 
-    console.log(allOrders)
-    console.log(allOrders[0])
-    
+       
 
     if (error) {
         return <pre>{error.repeat(1)} </pre>
@@ -59,7 +57,7 @@ const AllOrders = () => {
                                 </thead>
                 {
                     allOrders[0].map(allOrder => {
-                        console.log(allOrder)
+                        
                         return (
                                 <tbody>
                                     <tr>

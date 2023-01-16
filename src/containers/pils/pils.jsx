@@ -35,8 +35,6 @@ const Pils = () => {
         //Guardo la película seleccionada en redux.
 
         dispatch(addPil({ ...pil, details: pil }));
-
-        console.log("vamos a por pilDetail!")
         dispatch(addSpa({
           details: "pilDetail"
         }))

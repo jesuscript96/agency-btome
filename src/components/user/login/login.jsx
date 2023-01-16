@@ -113,10 +113,7 @@ function Login(props) {
 
     }
 
-    // console.log(success.loginSuccess)
-//   console.log(success)
   const jwt = localStorage.getItem("SAVEJWT")
-//   console.log(jwt)
 
     if (jwt === null) {
         return (

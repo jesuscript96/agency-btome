@@ -66,8 +66,6 @@ function Review(props) {
         } catch (error) { }
     }
 
-    console.log(success)
-    console.log(success.reviewSuccess)
 
     if (
         success === "" || success === "undefined" || success === undefined 

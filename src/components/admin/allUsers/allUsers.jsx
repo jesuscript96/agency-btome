@@ -73,7 +73,7 @@ const AllUsers = () => {
                                 </thead>
                 {
                     allUsers.map(allUser => {
-                        console.log(allUser.client)
+                        
                         return (
                             <tbody>
                                     <tr>

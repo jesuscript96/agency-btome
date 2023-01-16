@@ -64,7 +64,7 @@ const Services = () => {
 
         dispatch(addService({ ...service, details: service }));
 
-        console.log("vamos a por serviceDetail!")
+        
         dispatch(addSpa({
             details: "serviceDetail"
         }))
@@ -77,7 +77,7 @@ const Services = () => {
             price: prevState.price
 
         }))
-        console.log(criteria)
+        
     }
 
     const allServices = () => {
@@ -91,8 +91,6 @@ const Services = () => {
 
     useEffect(() => {
         //This function is triggered when the component is mounted for the first time.
-
-        // console.log(services)
 
         if (services.length === 0) {
 
@@ -120,21 +118,19 @@ const Services = () => {
 
     useEffect(() => {
 
-        console.log(criteria.goal)
+      
 
         if (criteria.goal !== '' || criteria.goal !== null) {
 
             //Voy a aplicar mi proceso de debounce....
             // if (services.length === 0) {
 
-                // console.log(criteria.goal, criteria.price)
+               
 
                 const bring = setTimeout(() => {
 
                     bringFilteredServices(criteria.goal, criteria.price)
                         .then(res => {
-                            // console.log(res)
-                            // console.log(res.data)
                             setServices(res.data)
 
                         })
@@ -146,7 +142,7 @@ const Services = () => {
             // }
 
         } else if (criteria.goal === '') {
-            // console.log(services)
+      
             if (services.length === 0) {
                 bringServices().then(
                     (res) => {
@@ -158,9 +154,6 @@ const Services = () => {
         }
 
     }, [criteria])
-
-
-    console.log(services)
 
     if (services.length === 0) {
         return (

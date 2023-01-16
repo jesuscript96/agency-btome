@@ -44,12 +44,10 @@ const Profile = () => {
             [e.target.name]: e.target.value
 
         }));
-        console.log(userUpdate)
     }
 
     const updateName = () => {
         try {
-            console.log(userUpdate.name)
             updateUserName(userUpdate, userJWT)
         } catch (error) {
 
@@ -77,7 +75,6 @@ const Profile = () => {
             bringUserInfo(userJWT)
                 .then(
                     (res) => {
-                        console.log(res.data)
                         setUserInfo(res.data)
 
                     }
@@ -91,20 +88,11 @@ const Profile = () => {
     }, [userInfo]);
 
     const servicesPage = () => {
-        console.log("vamos a por services!")
         dispatch(addSpa({
             details: "services"
         }))
         // navigate("/")
     }
-
-    console.log(userInfo)
-
-
-
-    // if (error) {
-    //     return <h2>{error.repeat(1)} </h2>
-    // }
 
     return (
         <Container >

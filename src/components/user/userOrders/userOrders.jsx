@@ -54,8 +54,6 @@ const UserOrders = () => {
     }
     
     const selectedService = useSelector(reviewData);
-    console.log(selectedService)
-    
 
     if (error) {
         return <pre>{ error.repeat(1) } </pre>

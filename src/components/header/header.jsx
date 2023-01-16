@@ -39,17 +39,14 @@ function OffcanvasExample() {
   let jwt = localStorage.getItem('SAVEJWT');
   const chartAdded = useSelector(chartData);
   const userLoged = useSelector(userData)
-  // console.log(userLoged)
 
   const servicesPage = () => {
-    // console.log("vamos a por services!")
     dispatch(addSpa({
       details: "services"
     }))
     // navigate("/")
   }
   const pilsPage = () => {
-    // console.log("vamos a por pils!")
     dispatch(addSpa({
       details: "pils"
     }))
@@ -57,7 +54,6 @@ function OffcanvasExample() {
   }
 
   const myAccountPage = () => {
-    // console.log("vamos a por my account!")
     dispatch(addSpa({
       details: "myaccount"
     }))
@@ -65,7 +61,6 @@ function OffcanvasExample() {
   }
 
   const homePage = () => {
-    // console.log("vamos a por Home!")
     dispatch(addSpa({
       details: "home"
     }))
@@ -87,8 +82,6 @@ function OffcanvasExample() {
     setLogged(false)
   }
 
-  // console.log(jwt) 
-  // console.log(userMailHeader) 
 
   if (jwt !== null) {
     return (

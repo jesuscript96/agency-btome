@@ -16,7 +16,6 @@ const PilsDetail = () => {
   const dispatch = useDispatch();
 
   const blogPage = () => {
-    console.log("vamos a por pils!")
     dispatch(addSpa({
       details: "pils"
     }))
@@ -24,8 +23,6 @@ const PilsDetail = () => {
   }
 
   const selectedPil = useSelector(pilData);
-  console.log(selectedPil)
-  console.log(selectedPil.img)
 
   if (selectedPil?.id_pil !== undefined) {
 

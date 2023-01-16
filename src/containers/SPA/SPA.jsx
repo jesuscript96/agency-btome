@@ -26,18 +26,12 @@ function SPA() {
 
     const [page2, setPage2] = useState(pageToSet)
 
-    console.log(pageToSet.details)
-    
-
     useEffect(() => {
         //This function is triggered when the component is mounted for the first time.
-       console.log("ebtras o que")
+       
         setPage(pageToSet.details)
                 
     }, [pageToSet]);
-    
-    console.log(page)
-
     if (page === "services") {
         return (
             <div>

@@ -29,17 +29,12 @@ function Cart(props) {
     const orderServices = () => {
         createNewOrder()
             .then(res => {
-                const userJWT = JSON.parse(localStorage.getItem("SAVEJWT"))    
-                // console.log(chartAdded.details)           
+                const userJWT = JSON.parse(localStorage.getItem("SAVEJWT"))            
                 chartAdded.details.map(service => {
-                    // console.log(service)
-                    // console.log(res.data)
-                    console.log(service.details)
                     let addServiceBody = {
                         "orderIdOrder": res.data,
                         "serviceIdService": service.details
                     }
-                    console.log(addServiceBody)
                     addServiceToOrder(addServiceBody, userJWT)
                     setSuccess(((prevState) => ({
                         ...prevState,
@@ -70,11 +65,6 @@ function Cart(props) {
             return resp
         } catch (error) { }
     }
-
-
-    console.log(chartAdded.details.bought)
-    console.log(bougth)
-    console.log(success.orderSuccess)
 
     if (bougth === "" && chartAdded.details.length === 0) {
         return (
